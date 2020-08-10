@@ -3,11 +3,11 @@
 @section('header')
 	<section class="content-header">
 	  <h1>
-        <span class="text-capitalize">Buy tuning credits</span>
+        <span class="text-capitalize">{{__('customer_msg.menu_BuyTuningCredits')}}</span>
 	  </h1>
 	  <ol class="breadcrumb">
 	    <li><a href="{{ url(config('backpack.base.route_prefix'), 'dashboard') }}">{{ trans('backpack::crud.admin') }}</a></li>
-	    <li class="active">Buy tuning credits</li>
+	    <li class="active">{{__('customer_msg.menu_BuyTuningCredits')}}</li>
 	  </ol>
 	</section>
 @endsection
@@ -42,9 +42,9 @@
 			    				<thead>
 			    					<tr>
 					    				<th>&nbsp;</th>
-					    				<th>Description</th>
-					    				<th>From</th>
-					    				<th>For</th>
+					    				<th>{{__('customer_msg.tb_header_Description')}}</th>
+                                        <th>{{__('customer_msg.tb_header_From')}}</th>
+                                        <th>{{__('customer_msg.tb_header_For')}}</th>
 					    				<th>&nbsp;</th>
 					    			</tr>
 			    				</thead>
@@ -58,14 +58,14 @@
 								    			<td>{{ $groupCreditTire->amount }} credits</td>
 								    			<td>
 								    				{{ config('site.currency_sign') }}
-								    				{{ 
-						    							number_format($groupCreditTire->pivot->from_credit, 2) 
+								    				{{
+						    							number_format($groupCreditTire->pivot->from_credit, 2)
 						    						}}
 								    			</td>
 								    			<td>
 								    				{{ config('site.currency_sign') }}
-								    				{{ 
-						    							number_format($groupCreditTire->pivot->for_credit, 2) 
+								    				{{
+						    							number_format($groupCreditTire->pivot->for_credit, 2)
 						    						}}
 								    			</td>
 								    			<td>
@@ -96,16 +96,16 @@
 						    		<tr>
 					    				<th>&nbsp;</th>
 					    				<th>&nbsp;</th>
-					    				<th>Order total</th>
+					    				<th>{{__('customer_msg.tb_header_OrderTotal')}}</th>
 					    				<th>&nbsp;</th>
 					    				<th>
-					    					{{ config('site.currency_sign') }} 
+					    					{{ config('site.currency_sign') }}
 					    					<span class="payable-amount"></span>
 					    				</th>
 					    			</tr>
 			    				</tbody>
 				    		</table>
-				    		<h4>Payment Method</h4>
+				    		<h4>{{__('customer_msg.buytuning_PaymentMethod')}}</h4>
 				    		<div class="form-group">
 				    			<img src="{{ asset('images/paypal.png') }}">
 				            </div>

@@ -22,7 +22,7 @@ class TransactionCrudController extends MasterController
         */
         $this->crud->setModel('App\Models\Transaction');
         $this->crud->setRoute('customer/transaction');
-        $this->crud->setEntityNameStrings('transaction', 'transactions');
+        $this->crud->setEntityNameStrings('transaction',  __('customer_msg.menu_Transactions'));
 
         /*
         |--------------------------------------------------------------------------
@@ -53,8 +53,8 @@ class TransactionCrudController extends MasterController
             'type' => 'date_range',
             'name' => 'created_at',
             'label' => 'From/To Date'
-            ], 
-            false, 
+            ],
+            false,
             function($value) {
                 $dates = json_decode($value);
                 $this->crud->query->whereDate('created_at','>=', $dates->from);
@@ -68,22 +68,22 @@ class TransactionCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'description',
-            'label' => 'Description',
+            'label' => __('customer_msg.tb_header_Description'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'credits_with_type',
-            'label' => 'Credits',
+            'label' => __('customer_msg.tb_header_Credits'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'status',
-            'label' => 'Status'
+            'label' => __('customer_msg.tb_header_Status'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Date',
+            'label' => __('customer_msg.tb_header_Date'),
         ]);
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');

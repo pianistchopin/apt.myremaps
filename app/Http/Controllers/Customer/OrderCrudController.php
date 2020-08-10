@@ -16,7 +16,7 @@ class OrderCrudController extends MasterController
 {
     public function __construct(){
         parent::__construct();
-        
+
     }
 
     public function setup()
@@ -28,7 +28,7 @@ class OrderCrudController extends MasterController
         */
         $this->crud->setModel('App\Models\Order');
         $this->crud->setRoute('customer/order');
-        $this->crud->setEntityNameStrings('order', 'orders');
+        $this->crud->setEntityNameStrings('order', __('customer_msg.menu_Orders'));
 
         /*
         |--------------------------------------------------------------------------
@@ -61,13 +61,13 @@ class OrderCrudController extends MasterController
             ], config('site.order_status'), function($value) {
                 $this->crud->addClause('WHERE', 'status', $value);
         });
-        
+
         $this->crud->addFilter([
             'type' => 'date_range',
             'name' => 'created_at',
             'label' => 'From/To Date'
-            ], 
-            false, 
+            ],
+            false,
             function($value) {
                 $dates = json_decode($value);
                 $this->crud->query->whereDate('created_at','>=', $dates->from);
@@ -82,27 +82,27 @@ class OrderCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'displayable_id',
-            'label' => 'Order no',
+            'label' => __('customer_msg.title_OrderNo'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Date',
+            'label' => __('customer_msg.tb_header_Date'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'description',
-            'label' => 'Description',
+            'label' => __('customer_msg.tb_header_Description'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'amount_with_sign',
-            'label' => 'Amount',
+            'label' => __('customer_msg.tb_header_Amount'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'status',
-            'label' => 'Status'
+            'label' => __('customer_msg.tb_header_Status'),
         ]);
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');

@@ -56,7 +56,7 @@
 								    <div class="form-group col-xs-12 required {{ $errors->has('file') ? ' has-error' : '' }}">
 									    <label>Modified file</label>
 								        <input type="file" name="file">
-								        {{-- 
+								        {{--
 								        @if(($entry->status == 'Completed') && ($entry->modified_file != ""))
 								        	<a href="{{ backpack_url('file-service/'.$entry->id.'/download-modified') }}">View current uploaded file</a>
 								        @endif
@@ -153,7 +153,7 @@
 						                    <th>Credits</th>
 						                    @php
 						                    	$tuningTypeCredits = $entry->tuningType->credits;
-											
+
 						                    	$tuningTypeOptionsCredits = $entry->tuningTypeOptions()->sum('credits');
 												$credits = ($tuningTypeCredits+$tuningTypeOptionsCredits);
 						                    @endphp
@@ -232,7 +232,7 @@
 					  	</div>
 					</div>
 				</div>
-				
+
 			</div>
 		</div>
 	@endsection

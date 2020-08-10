@@ -4,24 +4,24 @@
 	@section('header')
 		<section class="content-header">
 		  <h1>
-	        <span class="text-capitalize">File service</span>
-	        <small>Edit file service.</small>
+	        <span class="text-capitalize">{{__('customer_msg.tb_header_FileService')}}</span>
+	        <small>{{__('customer_msg.service_service_EditTitle')}}</small>
 		  </h1>
 		  <ol class="breadcrumb">
 		    <li><a href="{{ url(config('backpack.base.route_prefix'), 'dashboard') }}">{{ trans('backpack::crud.admin') }}</a></li>
-		    <li><a href="{{ url('customer/file-service') }}" class="text-capitalize">File services</a></li>
-		    <li class="active">File service:#{{ $entry->car }}</li>
+		    <li><a href="{{ url('customer/file-service') }}" class="text-capitalize">{{__('customer_msg.menu_FileServices')}}</a></li>
+		    <li class="active">{{__('customer_msg.tb_header_FileService')}}:#{{ $entry->car }}</li>
 		  </ol>
 		</section>
 	@endsection
 
 	@section('content')
-		
+
 		<div class="row">
 			<div class="col-md-12">
 				<!-- Default box -->
 				<a href="{{ url('customer/file-service') }}" class="hidden-print">
-					<i class="fa fa-angle-double-left"></i> Back to all  <span>file services</span>
+					<i class="fa fa-angle-double-left"></i> <span>{{__('customer_msg.service_BackToAllFileServices')}}</span>
 				</a><br><br>
 				<div class="row">
 					<div class="col-md-6">
@@ -30,7 +30,7 @@
 						  	@method('PUT')
 						  	<div class="box">
 							    <div class="box-header with-border">
-							      	<h3 class="box-title">Edit the file service</h3>
+							      	<h3 class="box-title">{{__('customer_msg.service_service_EditTitle')}}</h3>
 							    </div>
 						    	<div class="box-body row display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 						    		<div class="hidden  required">
@@ -40,7 +40,7 @@
 									  <input name="id" value="{{ $entry->id }}" class="form-control" type="hidden">
 									</div>
 									<div class="form-group col-md-6 col-xs-12 {{ $errors->has('make') ? ' has-error' : '' }}">
-								    	<label>Make</label>
+								    	<label>{{__('customer_msg.service_Make')}}</label>
 								        <input name="make" value="{{ (old('make'))?old('make'):$entry->make?$entry->make:'' }}" placeholder="Make" class="form-control" type="text">
 								        @if ($errors->has('make'))
 				                            <span class="help-block">
@@ -49,7 +49,7 @@
 				                        @endif
 								    </div>
 								    <div class="form-group col-md-6 col-xs-12 {{ $errors->has('model') ? ' has-error' : '' }}">
-								    	<label>Model</label>
+								    	<label>{{__('customer_msg.service_Model')}}</label>
 								        <input name="model" value="{{ (old('model'))?old('model'):$entry->model?$entry->model:'' }}" placeholder="Model" class="form-control" type="text">
 								        @if ($errors->has('model'))
 				                            <span class="help-block">
@@ -58,7 +58,7 @@
 				                        @endif
 								    </div>
 								    <div class="form-group col-md-6 col-xs-12 {{ $errors->has('generation') ? ' has-error' : '' }}">
-								    	<label>Generation</label>
+								    	<label>{{__('customer_msg.service_Generation')}}</label>
 								        <input name="generation" value="{{ (old('generation'))?old('generation'):$entry->generation?$entry->generation:'' }}" placeholder="Generation" class="form-control" type="text">
 								        @if ($errors->has('generation'))
 				                            <span class="help-block">
@@ -67,7 +67,7 @@
 				                        @endif
 								    </div>
 								    <div class="form-group col-md-6 col-xs-12 {{ $errors->has('engine') ? ' has-error' : '' }}">
-								    	<label>Engine</label>
+								    	<label>{{__('customer_msg.service_Engine')}}</label>
 								        <input name="engine" value="{{ (old('engine'))?old('engine'):$entry->engine?$entry->engine:'' }}" placeholder="Engine" class="form-control" type="text">
 								        @if ($errors->has('engine'))
 				                            <span class="help-block">
@@ -86,7 +86,7 @@
 								    </div>
 
 								    <div class="form-group col-md-6 col-xs-12 {{ $errors->has('engine_hp') ? ' has-error' : '' }}">
-								    	<label>Engine HP</label>
+								    	<label>{{__('customer_msg.service_EngineHP')}}</label>
 								        <input name="engine_hp" value="{{ (old('engine_hp'))?old('engine_hp'):$entry->engine_hp?$entry->engine_hp:'' }}" placeholder="Engine HP" class="form-control" type="number">
 								        @if ($errors->has('engine_hp'))
 				                            <span class="help-block">
@@ -95,7 +95,7 @@
 				                        @endif
 								    </div>
 								    <div class="form-group col-md-6 col-xs-12 {{ $errors->has('year') ? ' has-error' : '' }}">
-								    	<label>Year of Manufacture</label>
+								    	<label>{{__('customer_msg.service_YearOfManufacture')}}</label>
 								    	<select class="form-control" name="year">
 								    		@if(count(range(1990, date('Y'))))
 								    			@foreach(range(1990, date('Y')) as $year)
@@ -114,7 +114,7 @@
 								    </div>
 
 								    <div class="form-group col-md-6 col-xs-12 {{ $errors->has('gearbox') ? ' has-error' : '' }}">
-								    	<label>Gearbox</label>
+								    	<label>{{__('customer_msg.service_Gearbox')}}</label>
 								    	<select class="form-control" name="gearbox">
 								    		@if(count(config('site.file_service_gearbox')))
 								    			@foreach(config('site.file_service_gearbox') as $gearbox)
@@ -132,7 +132,7 @@
 				                        @endif
 								    </div>
 									<div class="form-group col-md-6 col-xs-12 {{ $errors->has('fuel_type') ? ' has-error' : '' }}">
-								    	<label>Fuel Type</label>
+								    	<label>{{__('customer_msg.service_FuelType')}}</label>
 								    	<select class="form-control" name="fuel_type">
 								    		@if(count(config('site.file_service_fuel_type')))
 								    			@foreach(config('site.file_service_fuel_type') as $fuel_type)
@@ -150,7 +150,7 @@
 				                        @endif
 								    </div>
 								    <div class="form-group col-md-6 col-xs-12 {{ $errors->has('license_plate') ? ' has-error' : '' }}">
-								    	<label>License plate</label>
+								    	<label>{{__('customer_msg.service_LicensePlate')}}</label>
 								        <input name="license_plate" value="{{ (old('license_plate'))?old('license_plate'):$entry->license_plate?$entry->license_plate:'' }}" placeholder="License plate" class="form-control" type="text">
 								        @if ($errors->has('license_plate'))
 				                            <span class="help-block">
@@ -160,7 +160,7 @@
 								    </div>
 
 								    <div class="form-group col-md-6 col-xs-12 {{ $errors->has('vin') ? ' has-error' : '' }}">
-								    	<label>Miles / KM <small class="text-muted">(optional)</small></label>
+								    	<label>{{__('customer_msg.service_MilesKM')}}<small class="text-muted">({{__('customer_msg.service_Optional')}})</small></label>
 								        <input name="vin" value="{{ (old('vin'))?old('vin'):$entry->vin?$entry->vin:'' }}" placeholder="VIN" class="form-control" type="text">
 								        @if ($errors->has('vin'))
 				                            <span class="help-block">
@@ -170,7 +170,7 @@
 								    </div>
 
 								    <div class="form-group col-xs-12 {{ $errors->has('note_to_engineer') ? ' has-error' : '' }}">
-								    	<label>Note to engineer <small class="text-muted">(optional)</small></label>
+								    	<label>{{__('customer_msg.service_Note2engineer')}} <small class="text-muted">({{__('customer_msg.service_Optional')}})</small></label>
 								        <input name="note_to_engineer" value="{{ (old('note_to_engineer'))?old('note_to_engineer'):$entry->note_to_engineer?$entry->note_to_engineer:'' }}" placeholder="Fuel octane rating " class="form-control" type="text">
 								        @if ($errors->has('note_to_engineer'))
 				                            <span class="help-block">
@@ -184,10 +184,10 @@
 									    <div class="btn-group">
 									        <button type="submit" class="btn btn-danger">
 									            <span class="fa fa-save" role="presentation" aria-hidden="true"></span> &nbsp;
-									            <span>Save</span>
+									            <span>{{__('customer_msg.btn_Save')}}</span>
 									        </button>
 									    </div>
-									    <a href="{{ url('customer/file-service') }}" class="btn btn-default"><span class="fa fa-ban"></span> &nbsp;Cancel</a>
+									    <a href="{{ url('customer/file-service') }}" class="btn btn-default"><span class="fa fa-ban"></span> &nbsp;{{__('customer_msg.btn_Cancel')}}</a>
 									</div>
 						    	</div>
 						  	</div>
@@ -196,7 +196,7 @@
 					<div class="col-md-6">
 						<div class="box">
 						    <div class="box-header with-border">
-						      	<h3 class="box-title">File service information</h3>
+						      	<h3 class="box-title">{{__('customer_msg.service_FileServiceInfo')}}</h3>
 						    </div>
 					    	<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 					    		<div class="table-responsive" style="width:100%">
@@ -206,23 +206,23 @@
 						                    <td>{{ $entry->id }}</td>
 						                </tr>
 						                <tr>
-						                    <th>Status</th>
+						                    <th>{{__('customer_msg.service_Status')}}</th>
 						                    <td>{{ $entry->status }}</td>
 						                </tr>
 						                <tr>
-						                    <th>Date submitted</th>
+                                            <th>{{__('customer_msg.service_DateSubmitted')}}</th>
 						                    <td>{{ $entry->created_at }}</td>
 						                </tr>
 						                <tr>
-						                    <th>Tuning type</th>
+                                            <th>{{__('customer_msg.service_TuningType')}}</th>
 						                    <td>{{ $entry->tuningType->label }}</td>
 						                </tr>
 						                <tr>
-						                    <th>Tuning options</th>
+						                    <th>{{__('customer_msg.service_TuningOtions')}}</th>
 						                    <td>{{ $entry->tuningTypeOptions()->pluck('label')->implode(',') }}</td>
 						                </tr>
 						                <tr>
-						                    <th>Credits</th>
+                                            <th>{{__('customer_msg.service_Credits')}}</th>
 						                    @php
 						                    	$tuningTypeCredits = $entry->tuningType->credits;
 						                    	$tuningTypeOptionsCredits = $entry->tuningTypeOptions()->sum('credits');
@@ -231,12 +231,12 @@
 						                    <td>{{ number_format($credits, 2) }}</td>
 						                </tr>
 						                <tr>
-						                    <th>Original file</th>
+                                            <th>{{__('customer_msg.service_OriginalFile')}}</th>
 						                    <td><a href="{{ backpack_url('file-service/'.$entry->id.'/download-orginal') }}">download</a></td>
 						                </tr>
 						                @if((($entry->status == 'Completed') || ($entry->status == 'Waiting')) && ($entry->modified_file != ""))
 							                <tr>
-							                    <th>Modified file</th>
+                                                <th>{{__('customer_msg.service_ModifiedFile')}}</th>
 							                    <td>
 							                    	<a href="{{ backpack_url('file-service/'.$entry->id.'/download-modified') }}">download</a>
 							                    	@if($entry->status == 'Waiting')
@@ -245,7 +245,7 @@
 							                    </td>
 							                </tr>
 							                <tr>
-							                	<th>Note By Engineer</th>
+                                                <th>{{__('customer_msg.service_NoteByEngineer')}}</th>
 							                	<td>{{ $entry->notes_by_engineer }}</td>
 							                </tr>
 						                @endif

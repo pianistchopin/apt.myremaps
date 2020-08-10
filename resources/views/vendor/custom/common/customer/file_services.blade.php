@@ -21,7 +21,7 @@
 		<a href="{{ backpack_url('customer') }}" class="hidden-print">
 			<i class="fa fa-angle-double-left"></i> Back to all  <span>customers</span>
 		</a><br><br>
-		
+
 		<div class="box">
 		    <div class="box-header with-border">
 		      	<h3 class="box-title">File services</h3>
@@ -63,7 +63,7 @@
 			    </div>
 		    </div>
 		</div>
-		
+
 	</div>
 </div>
 

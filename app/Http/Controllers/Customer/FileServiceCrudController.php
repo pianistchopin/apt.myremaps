@@ -19,7 +19,7 @@ class FileServiceCrudController extends MasterController
 
     public function setup()
     {
-        
+
 		/*
         |--------------------------------------------------------------------------
         | CrudPanel Basic Information
@@ -27,7 +27,7 @@ class FileServiceCrudController extends MasterController
         */
         $this->crud->setModel('App\Models\FileService');
         $this->crud->setRoute('customer/file-service');
-        $this->crud->setEntityNameStrings('file service', 'file services');
+        $this->crud->setEntityNameStrings('file service', __('customer_msg.menu_FileServices'));
 
         /*
         |--------------------------------------------------------------------------
@@ -40,7 +40,7 @@ class FileServiceCrudController extends MasterController
         $this->crud->addButtonFromView('line','file_service_ticket','file_service_ticket','end');
         $this->crud->setEditView('vendor.custom.customer.file_service.index');
         $this->crud->enableExportButtons();
-		
+
 		$this->crud->removeButton('delete');
         $this->crud->denyAccess('delete');
 
@@ -69,8 +69,8 @@ class FileServiceCrudController extends MasterController
             'type' => 'date_range',
             'name' => 'created_at',
             'label' => 'Date range'
-            ], 
-            false, 
+            ],
+            false,
             function($value) {
                 $dates = json_decode($value);
                 $this->crud->query->whereDate('created_at','>=', $dates->from);
@@ -85,13 +85,13 @@ class FileServiceCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'displayable_id',
-            'label' => 'Job No'
+            'label' =>  __('customer_msg.tb_header_JobNo')
         ]);
 
         $this->crud->addColumn([
             'name' => 'car',
-            'label' => 'Car',
-            'searchLogic' => function ($query, $column, $searchTerm) { 
+            'label' => __('customer_msg.tb_header_Car'),
+            'searchLogic' => function ($query, $column, $searchTerm) {
                 $searchWords = explode(' ', $searchTerm);
                 if(count($searchWords)){
                     foreach ($searchWords as $key => $searchWord) {
@@ -103,12 +103,12 @@ class FileServiceCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'license_plate',
-            'label' => 'License Plate '
+            'label' => __('customer_msg.tb_header_License')
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Created at'
+            'label' => __('customer_msg.tb_header_CreatedAt')
         ]);
 
         /*
@@ -195,7 +195,7 @@ class FileServiceCrudController extends MasterController
             'allows_null' => false,
             'wrapperAttributes'=>['class'=>'form-group col-md-5 col-xs-12']
         ]);
-		
+
 		$this->crud->addField([
             'name' => 'fuel_type',
             'label' => "Fuel Type",
@@ -324,7 +324,7 @@ class FileServiceCrudController extends MasterController
             \Alert::error($e->getMessage())->flash();
             return redirect(url('customer/file-service'));
         }
-        
+
     }
 
     /**
@@ -386,7 +386,7 @@ class FileServiceCrudController extends MasterController
      */
     public function update(UpdateRequest $request)
     {
-		
+
         try{
             $redirect_location = parent::updateCrud($request);
             /*$fileService = $this->crud->entry;
@@ -399,7 +399,7 @@ class FileServiceCrudController extends MasterController
             \Alert::error($e->getMessage())->flash();
             return redirect(url('customer/file-service'));
         }
-      
+
     }
 
     /**
@@ -421,7 +421,7 @@ class FileServiceCrudController extends MasterController
             \Alert::error(__('customer.opps'))->flash();
         }
         return redirect('customer/file-service');
-        
+
     }
 
     /**
@@ -443,15 +443,15 @@ class FileServiceCrudController extends MasterController
             \Alert::error(__('customer.opps'))->flash();
         }
         return redirect('customer/file-service');
-        
+
     }
-    
+
     /**
      * Create resource
      * @return $response
      */
     public function createTicket(\App\Models\FileService $fileService){
-      
+
         $data['fileService'] = $fileService;
         $data['crud'] = $this->crud;
         $data['entry'] = $this->crud;
@@ -469,13 +469,13 @@ class FileServiceCrudController extends MasterController
         $ticket->receiver_id = $fileService->user->id;
 		if($ticket->sender_id == $ticket->receiver_id) {
 			$ticket->receiver_id = $this->user->company->owner->id;
-		} 
+		}
         $ticket->file_servcie_id = $request->file_servcie_id;
         $ticket->message = $request->message;
         if($request->uploaded_file != null){
             $ticket->document = $request->uploaded_file;
         }
-        $ticket->is_closed = 0;        
+        $ticket->is_closed = 0;
         $jobDetails=$fileService->make.' '.$fileService->model.' '.$fileService->generation;
         if($ticket->save()){
             try{
