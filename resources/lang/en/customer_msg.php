@@ -11,6 +11,14 @@ return [
     'tb_header_Aktionen' => 'Aktionen',
     'tb_header_Company' => 'Company',
     'tb_header_FileService' => 'File Service',
+    'tb_header_TicketStatus' => 'Ticket Status',
+    'tb_header_Description' => 'Description',
+    'tb_header_From' => 'From',
+    'tb_header_For' => 'For',
+    'tb_header_OrderTotal' => 'Order Total',
+    'tb_header_Date' => 'Date',
+    'tb_header_Amount' => 'Amount',
+    'tb_header_Credits' => 'Credits',
     'btn_ViewAllFileServices' => 'View all file services',
     'btn_Submit' => 'Submit',
     'title_Notes' => 'Titles',
@@ -57,6 +65,5 @@ return [
     'service_Credits' => 'Credits',
     'service_OriginalFile' => 'Original file',
     'service_ModifiedFile' => 'Modified file',
-    'service_NoteByEngineer' => 'Note By Engineer',
-
+    'service_NoteByEngineer' => 'Note By Engineer'
 ];
