@@ -25,8 +25,11 @@ return [
     'btn_Submit' => 'Submit',
     'btn_Save' => 'Save',
     'btn_Cancel' => 'Cancel',
+    'btn_Send' => 'Send',
     'title_Notes' => 'Titles',
     'title_Message' => 'Message',
+    'title_TypeMessage' => 'Type Message',
+    'title_File' => 'File',
     'title_OrderNo' => 'Order No',
 
 //    sidebar menu
@@ -71,7 +74,7 @@ return [
     'service_LicensePlate' => 'License plate',
     'service_MilesKM' => 'Miles / KM',
     'service_Optional' => 'Optional',
-    'service_Note2engineer' => 'Note to engineer(optional)',
+    'service_Note2engineer' => 'Note to engineer',
     'service_Status' => 'Status',
     'service_DateSubmitted' => 'Date submitted',
     'service_TuningType' => 'Tuning type',
@@ -85,4 +88,9 @@ return [
 
 //    buy tuning credits
     'buytuning_PaymentMethod' => 'Payment Method',
+
+//    contact us
+    'contactus_ContactUs' => 'Contact Us',
+    'contactus_CarInformation' => 'Car information',
+    'contactus_Year' => 'Year',
 ];

@@ -4,7 +4,7 @@
 @section('header')
 	<section class="content-header">
 	  	<h1>
-        	<span class="text-capitalize">Contact Us</span>
+        	<span class="text-capitalize">{{__('customer_msg.contactus_ContactUs')}}</span>
 	  	</h1>
 		<ol class="breadcrumb">
 		    <li>
@@ -27,8 +27,8 @@
 @section('content')
 	@if ($crud->hasAccess('list'))
 		<a href="{{ url($crud->route) }}" class="hidden-print">
-			<i class="fa fa-angle-double-left"></i> 
-			{{ trans('backpack::crud.back_to_all') }} 
+			<i class="fa fa-angle-double-left"></i>
+			{{ trans('backpack::crud.back_to_all') }}
 			<span>{{ $crud->entity_name_plural }}</span>
 		</a>
 		<br><br>
@@ -55,8 +55,8 @@
 	                     	<input type="hidden" name="file_servcie_id" value="{{ $fileService->id }}" />
 	                	</div>
 		                <div class="form-group col-md-12 required {{ $errors->has('message') ? ' has-error' : '' }}">
-		                    <label>Message</label>
-		                    <textarea name="message" placeholder="Type Message ..." class="form-control" cols="70" rows="4"></textarea>
+		                    <label>{{__('customer_msg.title_Message')}}</label>
+		                    <textarea name="message" placeholder="{{__('customer_msg.title_TypeMessage')}} ..." class="form-control" cols="70" rows="4"></textarea>
 		                    @if ($errors->has('message'))
 		                        <span class="help-block">
 		                            <strong>{{ $errors->first('message') }}</strong>
@@ -67,12 +67,12 @@
 		                  <input name="uploaded_file" value="" class="form-control" type="hidden">
 		              </div>
 		                <div class="form-group col-md-12">
-		                    <label>File</label>
+		                    <label>{{__('customer_msg.title_File')}}</label>
 		                    <input type="file" name="document" />
 		                </div>
 	                   	<div class="form-group col-md-12">
 	                  		<span class="input-group-btn">
-	                        	<button type="submit" class="btn btn-success btn-flat">Send</button>
+	                        	<button type="submit" class="btn btn-success btn-flat">{{__('customer_msg.btn_Send')}}</button>
 	                   		</span>
 	                  	</div>
 	                </form>
@@ -84,7 +84,7 @@
 	    		<div class="col-md-12">
 	    			<div class="box">
 					    <div class="box-header with-border">
-					      	<h3 class="box-title">File service information</h3>
+					      	<h3 class="box-title">{{__('customer_msg.service_FileServiceInfo')}}</h3>
 					    </div>
 				    	<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 				    		<div class="table-responsive" style="width:100%">
@@ -94,23 +94,23 @@
 					                    <td>{{ $fileService->displayable_id }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Status</th>
+					                    <th>{{__('customer_msg.service_Status')}}</th>
 					                    <td>{{ $fileService->status }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Date submitted</th>
+					                    <th>{{__('customer_msg.service_DateSubmitted')}}</th>
 					                    <td>{{ $fileService->created_at }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Tuning type</th>
+					                    <th>{{__('customer_msg.service_TuningType')}}</th>
 					                    <td>{{ $fileService->tuningType->label }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Tuning options</th>
+					                    <th>{{__('customer_msg.service_TuningOtions')}}</th>
 					                    <td>{{ $fileService->tuningTypeOptions()->pluck('label')->implode(',') }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Credits</th>
+					                    <th>{{__('customer_msg.service_Credits')}}</th>
 					                    @php
 					                    	$tuningTypeCredits = $fileService->tuningType->credits;
 					                    	$tuningTypeOptionsCredits = $fileService->tuningTypeOptions()->sum('credits');
@@ -119,12 +119,12 @@
 					                    <td>{{ number_format($credits, 2) }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Original file</th>
+					                    <th>{{__('customer_msg.service_OriginalFile')}}</th>
 					                    <td><a href="{{ backpack_url('file-service/'.$fileService->id.'/download-orginal') }}">download</a></td>
 					                </tr>
 					                @if((($fileService->status == 'Completed') || ($fileService->status == 'Waiting')) && ($fileService->modified_file != ""))
 						                <tr>
-						                    <th>Modified file</th>
+						                    <th>{{__('customer_msg.service_ModifiedFile')}}</th>
 						                    <td>
 						                    	<a href="{{ backpack_url('file-service/'.$fileService->id.'/download-modified') }}">download</a>
 						                    	@if($fileService->status == 'Waiting')
@@ -143,17 +143,17 @@
 	    		<div class="col-md-12">
 	    			<div class="box">
 					    <div class="box-header with-border">
-					      	<h3 class="box-title">Car information</h3>
+					      	<h3 class="box-title">{{__('customer_msg.contactus_CarInformation')}}</h3>
 					    </div>
 				    	<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 				    		<div class="table-responsive" style="width:100%">
 								<table class="table table-striped">
 						            <tr>
-					                    <th>Car</th>
+					                    <th>{{__('customer_msg.tb_header_Car')}}</th>
 					                    <td>{{ $fileService->car }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Engine</th>
+                                        <th>{{__('customer_msg.service_Engine')}}</th>
 					                    <td>{{ $fileService->engine }}</td>
 					                </tr>
 					                <tr>
@@ -161,19 +161,19 @@
 					                    <td>{{ $fileService->ecu }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Engine HP</th>
+                                        <th>{{__('customer_msg.service_EngineHP')}}</th>
 					                    <td>{{ $fileService->engine_hp }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Year</th>
+                                        <th>{{__('customer_msg.contactus_Year')}}</th>
 					                    <td>{{ $fileService->year }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Gearbox</th>
+                                        <th>{{__('customer_msg.service_Gearbox')}}</th>
 					                    <td>{{ $fileService->gearbox }}</td>
 					                </tr>
 					                <tr>
-					                    <th>License plate</th>
+                                        <th>{{__('customer_msg.service_LicensePlate')}}</th>
 					                    <td>{{ $fileService->license_plate }}</td>
 					                </tr>
 					                <tr>
@@ -181,7 +181,7 @@
 					                    <td>{{ $fileService->vin }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Note to engineer</th>
+                                        <th>{{__('customer_msg.service_Note2engineer')}}</th>
 					                    <td>{{ $fileService->note_to_engineer }}</td>
 					                </tr>
 						        </table>
@@ -190,7 +190,7 @@
 				  	</div>
 	    		</div>
 	    	</div>
-		</div> 
+		</div>
 	</div>
 	@section('scripts')
 		<script>

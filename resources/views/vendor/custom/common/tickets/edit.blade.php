@@ -33,8 +33,8 @@
 		<!-- Default box -->
 		@if ($crud->hasAccess('list'))
 			<a href="{{ url($crud->route) }}" class="hidden-print">
-				<i class="fa fa-angle-double-left"></i> 
-				{{ trans('backpack::crud.back_to_all') }} 
+				<i class="fa fa-angle-double-left"></i>
+				{{ trans('backpack::crud.back_to_all') }}
 				<span>{{ $crud->entity_name_plural }}</span>
 			</a>
 			<br><br>
@@ -82,7 +82,7 @@
                                 	<i class="fa fa-file"></i>
 									<span class="filename">{{ $entry->document }}</span>
                                 </a>
-                            @endif 
+                            @endif
 	                    </div>
 	                    <!-- /.direct-chat-text -->
 	                </div>
@@ -119,7 +119,7 @@
 		                                	<i class="fa fa-file"></i>
 											<span class="filename">{{ $val->document }}</span>
 		                                </a>
-		                            @endif 
+		                            @endif
 		                          </div>
 		                          <!-- /.direct-chat-text -->
 		                        </div>
@@ -139,7 +139,7 @@
 		                                		<i class="fa fa-file"></i>
 												<span class="filename">{{ $val->document }}</span>
 		                                	</a>
-		                              	@endif  
+		                              	@endif
 		                            </div>
 		                            <!-- /.direct-chat-text -->
 	                          	</div>
@@ -193,12 +193,12 @@
 	                	</div>
 	                </div>
               	</form>
-				
+
             </div>
             <!-- /.box-footer-->
         </div>
-		
-		
+
+
 		<!----changes---->
 		@if($entry->file_servcie_id > 0){
 			<div class="box">
@@ -210,7 +210,7 @@
 							<table class="table table-striped">
 								<tr>
 									<th>Business</th>
-									
+
 									<td>{{ $entry->FileService->user->business_name }}</td>
 								</tr>
 								<tr>
