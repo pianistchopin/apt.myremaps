@@ -92,5 +92,12 @@ return [
 //    contact us
     'contactus_ContactUs' => 'Contact Us',
     'contactus_CarInformation' => 'Car information',
+    'contactus_CustomerInfor' => 'Customer information',
+    'contactus_Business' => 'Business',
     'contactus_Year' => 'Year',
+    'contactus_Name' => 'Business',
+    'contactus_EmailAddress' => 'Email address',
+    'contactus_Phone' => 'Phone',
+    'contactus_Country' => 'Country',
+
 ];

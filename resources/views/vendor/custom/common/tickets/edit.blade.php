@@ -43,7 +43,7 @@
 		@include('crud::inc.grouped_errors')
         <div class="box box-success direct-chat direct-chat-success">
             <div class="box-header with-border">
-              	<h3 class="box-title">Contact Us</h3>
+              	<h3 class="box-title">{{__('customer_msg.contactus_ContactUs')}}</h3>
               	<a href="{{ backpack_url('tickets/'.$entry->id.'/mark-close') }}" class="btn btn-success pull-right">
               		{{ ($entry->is_closed == 0)? "Mark As Closed":"Closed" }}
               	</a>
@@ -176,7 +176,7 @@
 	                {!! csrf_field() !!}
 	                {!! method_field('PUT') !!}
 	                <div class="form-group col-xs-12">
-	                	<textarea name="message" placeholder="Type Message ..." class="form-control" cols="50" rows="4">{{ old('message') }}</textarea>
+	                	<textarea name="message" placeholder="{{__('customer_msg.title_TypeMessage')}} ..." class="form-control" cols="50" rows="4">{{ old('message') }}</textarea>
 	                </div>
 	                <div class="hidden">
 		              	<input type="hidden" name="file_servcie_id" value="{{ ($fileService) ? $fileService->id: 0 }}">
@@ -188,7 +188,7 @@
 	                	<div class="input-group">
 	                		<input type="file" name="document"/>
 		                   	<span class="input-group-btn">
-		                        <button type="submit" class="btn btn-success">Send</button>
+		                        <button type="submit" class="btn btn-success">{{__('customer_msg.btn_Send')}}</button>
 		                   	</span>
 	                	</div>
 	                </div>
@@ -200,33 +200,33 @@
 
 
 		<!----changes---->
-		@if($entry->file_servcie_id > 0){
+		@if($entry->file_servcie_id > 0)
 			<div class="box">
 					<div class="box-header with-border">
-						<h3 class="box-title">Customer information</h3>
+						<h3 class="box-title">{{__('customer_msg.contactus_CustomerInfor')}}</h3>
 					</div>
 					<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 						<div class="table-responsive" style="width:100%">
 							<table class="table table-striped">
 								<tr>
-									<th>Business</th>
+									<th>{{__('customer_msg.contactus_Business')}}</th>
 
 									<td>{{ $entry->FileService->user->business_name }}</td>
 								</tr>
 								<tr>
-									<th>Name</th>
+									<th>{{__('customer_msg.contactus_Name')}}</th>
 									<td>{{ $entry->FileService->user->full_name }}</td>
 								</tr>
 								<tr>
-									<th>Email address</th>
+									<th>{{__('customer_msg.contactus_EmailAddress')}}</th>
 									<td>{{ $entry->FileService->user->email }}</td>
 								</tr>
 								<tr>
-									<th>Phone</th>
+									<th>{{__('customer_msg.contactus_Phone')}}</th>
 									<td>{{ $entry->FileService->user->phone }}</td>
 								</tr>
 								<tr>
-									<th>County</th>
+									<th>{{__('customer_msg.contactus_Country')}}</th>
 									<td>{{ $entry->FileService->user->county }}</td>
 								</tr>
 							</table>
@@ -243,7 +243,7 @@
 				<div class="col-md-12">
 					<div class="box">
 				    	<div class="box-header with-border">
-				      		<h3 class="box-title">File service information</h3>
+				      		<h3 class="box-title">{{__('customer_msg.service_FileServiceInfo')}}</h3>
 				    	</div>
 			    		<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 			    			<div class="table-responsive" style="width:100%">
@@ -253,23 +253,23 @@
 					                    <td>{{ $fileService->displayable_id }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Status</th>
+					                    <th>{{__('customer_msg.service_Status')}}</th>
 					                    <td>{{ $fileService->status }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Date submitted</th>
+					                    <th>{{__('customer_msg.service_DateSubmitted')}}</th>
 					                    <td>{{ $fileService->created_at }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Tuning type</th>
+					                    <th>{{__('customer_msg.service_TuningType')}}</th>
 					                    <td>{{ $fileService->tuningType->label }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Tuning options</th>
+					                    <th>{{__('customer_msg.service_TuningOtions')}}</th>
 					                    <td>{{ $fileService->tuningTypeOptions()->pluck('label')->implode(',') }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Credits</th>
+					                    <th>{{__('customer_msg.service_Credits')}}</th>
 					                    @php
 					                    	$tuningTypeCredits = $fileService->tuningType->credits;
 					                    	$tuningTypeOptionsCredits = $fileService->tuningTypeOptions()->sum('credits');
@@ -278,7 +278,7 @@
 					                    <td>{{ number_format($credits, 2) }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Original file</th>
+					                    <th>{{__('customer_msg.service_OriginalFile')}}</th>
 					                    <td>
 					                    	<a href="{{ backpack_url('file-service/'.$fileService->id.'/download-orginal') }}">
 						                    	download
@@ -287,7 +287,7 @@
 					                </tr>
 					                @if((($fileService->status == 'Completed') || ($fileService->status == 'Waiting')) && ($fileService->modified_file != ""))
 						                <tr>
-						                    <th>Modified file</th>
+						                    <th>{{__('customer_msg.service_ModifiedFile')}}</th>
 						                    <td>
 						                    	<a href="{{ backpack_url('file-service/'.$fileService->id.'/download-modified') }}">download</a>
 						                    	@if($fileService->status == 'Waiting')
@@ -304,17 +304,17 @@
 		        <div class="col-md-12">
 				  	<div class="box">
 					    <div class="box-header with-border">
-					      	<h3 class="box-title">Car information</h3>
+					      	<h3 class="box-title">{{__('customer_msg.contactus_CarInformation')}}</h3>
 					    </div>
 				    	<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 				    		<div class="table-responsive" style="width:100%">
 								<table class="table table-striped">
 						            <tr>
-					                    <th>Car</th>
+					                    <th>{{__('customer_msg.tb_header_Car')}}</th>
 					                    <td>{{ $fileService->car }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Engine</th>
+					                    <th>{{__('customer_msg.service_Engine')}}</th>
 					                    <td>{{ $fileService->engine }}</td>
 					                </tr>
 					                <tr>
@@ -322,19 +322,19 @@
 					                    <td>{{ $fileService->ecu }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Engine HP</th>
+					                    <th>{{__('customer_msg.service_EngineHP')}}</th>
 					                    <td>{{ $fileService->engine_hp }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Year</th>
+					                    <th>{{__('customer_msg.contactus_Year')}}</th>
 					                    <td>{{ $fileService->year }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Gearbox</th>
+					                    <th>{{__('customer_msg.service_Gearbox')}}</th>
 					                    <td>{{ $entry->gearbox }}</td>
 					                </tr>
 					                <tr>
-					                    <th>License plate</th>
+					                    <th>{{__('customer_msg.tb_header_License')}}</th>
 					                    <td>{{ $fileService->license_plate }}</td>
 					                </tr>
 					                <tr>
@@ -342,7 +342,7 @@
 					                    <td>{{ $fileService->vin }}</td>
 					                </tr>
 					                <tr>
-					                    <th>Note to engineer</th>
+					                    <th>{{__('customer_msg.service_Note2engineer')}}</th>
 					                    <td>{{ $fileService->note_to_engineer }}</td>
 					                </tr>
 						        </table>
