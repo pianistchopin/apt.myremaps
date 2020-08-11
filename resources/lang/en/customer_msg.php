@@ -1,5 +1,18 @@
 <?php
 return [
+//    flag
+    'English' => 'English',
+    'French' => 'French',
+    'Spanish' => 'Spanish',
+    'Portuguese' => 'Portuguese',
+    'Italian' => 'Italian',
+    'Japanese' => 'Japanese',
+    'Dutch' => 'Dutch',
+    'Polish' => 'Polish',
+    'German' => 'German',
+    'Russian' => 'Russian',
+    'Turkish' => 'Turkish',
+
 //    button, a tag
     'a_moreInfo' => 'More info',
     'tb_header_Car' => 'Car',
@@ -20,17 +33,22 @@ return [
     'tb_header_OrderTotal' => 'Order Total',
     'tb_header_Date' => 'Date',
     'tb_header_Amount' => 'Amount',
+    'tb_header_Options' => 'Options',
+    'tb_Customer' => 'Customer',
     'tb_header_Credits' => 'Credits',
     'btn_ViewAllFileServices' => 'View all file services',
     'btn_Submit' => 'Submit',
     'btn_Save' => 'Save',
     'btn_Cancel' => 'Cancel',
     'btn_Send' => 'Send',
+    'btn_ChoosePackages' => 'Choose Packages',
+    'btn_ViewAllOrders' => 'View all orders',
     'title_Notes' => 'Titles',
     'title_Message' => 'Message',
     'title_TypeMessage' => 'Type Message',
     'title_File' => 'File',
     'title_OrderNo' => 'Order No',
+
 
 //    sidebar menu
     'menu_FileServices' => 'File services',
@@ -38,12 +56,20 @@ return [
     'menu_BuyTuningCredits' => 'Buy tuning credits',
     'menu_Orders' => 'Orders',
     'menu_Transactions' => 'Transactions',
+    'menu_Customers' => 'Customers',
+    'menu_EmailTemplates' => 'Email Templates',
+    'menu_TuningCredit' => 'Tuning credit prices',
+    'menu_TuningTypes' => 'Tuning types',
+    'menu_MySubscriptions' => 'My Subscriptions',
+    'menu_CompanySettings' => 'Company Settings',
+
 
 //    dashboard top title
     'dash_OpenFileService' => 'OPEN FILE SERVICES',
     'dash_WaitingService' => 'WAITING FILE SERVICES',
     'dash_CompletedService' => 'COMPLETED FILE SERVICES',
     'dash_RecentService' => 'Recent file service',
+    'dash_RecentOrders' => 'Recent Orders',
 
     'dash_CompanyInformation' => 'Company information',
     'dash_EmailAddresses' => 'Email addresses',
@@ -55,6 +81,9 @@ return [
     'dash_GiveRating' => 'Give Rating to Company',
     'dash_OverallCompanyRating' => 'Overall Company Rating',
     'dash_noteDescription' => 'MONDAY - FRIDAY 9 - 5pm ALLOW 1 HOUR FOR FILE RETURN SATURDAY 10.30 - 2pm FILES WITH PRIOR NOTICE ONLY !',
+
+    'dash_Subscription' => 'Subscription',
+    'dash_SubscriptionDesc' => 'Please activate your subscription.Click on the button below and select your subscription. Once completed your panel will be fully activated.',
 
 //  file services
     'service_filter_title' => 'FILTER',
@@ -99,5 +128,4 @@ return [
     'contactus_EmailAddress' => 'Email address',
     'contactus_Phone' => 'Phone',
     'contactus_Country' => 'Country',
-
 ];

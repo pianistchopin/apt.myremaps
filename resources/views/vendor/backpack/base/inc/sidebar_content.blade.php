@@ -7,17 +7,17 @@
     </li>
     <li>
         <a href="{{ backpack_url('customer') }}">
-            <i class="fa fa-fw fa-users"></i> <span>{{ __('Customers')}}</span>
+            <i class="fa fa-fw fa-users"></i> <span>{{ __('customer_msg.menu_Customers')}}</span>
         </a>
     </li>
     <li>
         <a href="{{ backpack_url('file-service') }}">
-            <i class="fa fa-download"></i> <span>{{ __('File services')}}</span>
+            <i class="fa fa-download"></i> <span>{{ __('customer_msg.menu_FileServices')}}</span>
         </a>
     </li>
     <li>
         <a href="{{ backpack_url('tickets') }}">
-            <i class="fa fa-comments"></i> <span>{{ __('Support tickets')}}</span>
+            <i class="fa fa-comments"></i> <span>{{ __('customer_msg.menu_SupportTickets')}}</span>
             @if($tickets_count)
                 <span class="pull-right-container">
               <small class="label pull-right bg-blue"><i class="fa fa-envelope"></i></small>
@@ -27,30 +27,30 @@
     </li>
     <li>
         <a href="{{ backpack_url('order') }}">
-            <i class="fa fa-list"></i> <span>{{ __('Orders')}}</span>
+            <i class="fa fa-list"></i> <span>{{ __('customer_msg.menu_Orders')}}</span>
         </a>
     </li>
 
     <li>
         <a href="{{ backpack_url('transaction') }}">
-            <i class="fa fa-fw fa-table"></i> <span>{{ __('Transactions')}}</span>
+            <i class="fa fa-fw fa-table"></i> <span>{{ __('customer_msg.menu_Transactions')}}</span>
         </a>
     </li>
 
     <li>
         <a href="{{ backpack_url('email-template') }}">
-            <i class="fa fa-copy"></i> <span>{{ __('Email Templates')}}</span>
+            <i class="fa fa-copy"></i> <span>{{ __('customer_msg.menu_EmailTemplates')}}</span>
         </a>
     </li>
 
     <li>
         <a href="{{ backpack_url('tuning-credit') }}">
-            <i class="fa fa-list"></i> <span>{{ __('Tuning credit prices')}}</span>
+            <i class="fa fa-list"></i> <span>{{ __('customer_msg.menu_TuningCredit')}}</span>
         </a>
     </li>
     <li>
         <a href="{{ backpack_url('tuning-type') }}">
-            <i class="fa fa-list"></i> <span>{{ __('Tuning types')}}</span>
+            <i class="fa fa-list"></i> <span>{{ __('customer_msg.menu_TuningTypes')}}</span>
         </a>
     </li>
     @if($user->is_master)
@@ -73,13 +73,13 @@
     @else
         <li>
             <a href="{{ backpack_url('subscription') }}">
-                <i class="fa fa-list"></i> <span>{{ __('My Subscriptions')}}</span>
+                <i class="fa fa-list"></i> <span>{{ __('customer_msg.menu_MySubscriptions')}}</span>
             </a>
         </li>
     @endif
     <li>
         <a href="{{ backpack_url('company-setting') }}">
-            <i class="fa fa-cog"></i> <span>{{ __('Company Settings')}}</span>
+            <i class="fa fa-cog"></i> <span>{{ __('customer_msg.menu_CompanySettings')}}</span>
         </a>
     </li>
 @else

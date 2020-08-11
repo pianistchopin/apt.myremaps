@@ -4,16 +4,16 @@
             <div class="col-md-6 col-xs-12">
                 <div class="box">
                     <div class="box-header with-border">
-                        <h3 class="box-title">Subscription</h3>
+                        <h3 class="box-title">{{__('customer_msg.dash_Subscription')}}</h3>
                     </div>
                     <div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
                         <p>
-                            Please activate your subscription.Click on the button below and select your subscription. Once completed your panel will be fully activated.
+                            {{__('customer_msg.dash_SubscriptionDesc')}}
                         </p>
-                        
+
                     </div>
                     <div class="box-footer">
-                        <a href="{{ route('subscription.packages') }}" class="btn btn-danger">Choose Packages</a>
+                        <a href="{{ route('subscription.packages') }}" class="btn btn-danger"> {{__('customer_msg.btn_ChoosePackages')}}</a>
                     </div>
                 </div>
             </div>
@@ -35,13 +35,13 @@
         <div class="small-box bg-aqua">
             <div class="inner">
                 <h3>{{ $openFileServices }}</h3>
-                <p>OPEN FILE SERVICES</p>
+                <p>{{__('customer_msg.dash_OpenFileService')}}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-copy"></i>
             </div>
             <a href="{{ url('admin/file-service?status=O') }}" class="small-box-footer">
-                More info <i class="fa fa-arrow-circle-right"></i>
+                {{__('customer_msg.a_moreInfo')}} <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div>
@@ -50,13 +50,13 @@
         <div class="small-box bg-green">
             <div class="inner">
                 <h3>{{ $waitingFileServices }}</h3>
-                <p>WAITING FILE SERVICES</p>
+                <p>{{__('customer_msg.dash_WaitingService')}}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-copy"></i>
             </div>
             <a href="{{ url('admin/file-service?status=W') }}" class="small-box-footer">
-                More info <i class="fa fa-arrow-circle-right"></i>
+                {{__('customer_msg.a_moreInfo')}} <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div>
@@ -66,32 +66,32 @@
         <div class="small-box bg-yellow">
             <div class="inner">
                 <h3>{{ $complatedFileServices }}</h3>
-                <p>COMPLETED FILE SERVICES</p>
+                <p>{{__('customer_msg.dash_CompletedService')}}</p>
             </div>
             <div class="icon">
                 <i class="fa fa-copy"></i>
             </div>
             <a href="{{ url('admin/file-service?status=C') }}" class="small-box-footer">
-                More info <i class="fa fa-arrow-circle-right"></i>
+                {{__('customer_msg.a_moreInfo')}} <i class="fa fa-arrow-circle-right"></i>
             </a>
         </div>
     </div>
 </div>
 
 @if($user->company->id == 1)
-	
+
 	@if($user->company->is_public == 1)
-		@php 
-			$accountType = 'Public'; 
-			$changeAccountType = 'Private'; 
+		@php
+			$accountType = 'Public';
+			$changeAccountType = 'Private';
 		@endphp
 	@else
-		@php 
-			$accountType = 'Private'; 
-			$changeAccountType = 'Public'; 
+		@php
+			$accountType = 'Private';
+			$changeAccountType = 'Public';
 		@endphp
 	@endif
-	
+
 	<div class="row">
 		<div class="col-md-6 col-xs-12">
 			<div class="box">
@@ -99,17 +99,17 @@
 					<div class="box-header with-border">
 						<h3 class="box-title">Account Type</h3>
 					</div>
-					
+
 					<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 						<p> <b>Your Account Type : </b> @php echo $accountType @endphp</p>
 					</div>
-					
+
 					<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 						<a href="company/@php echo $user->company->id @endphp/company-account-type" class="btn btn-danger">Want to  @php echo $changeAccountType @endphp ? </a>
-					</div> 
+					</div>
 				</div>
 			</div>
-		</div>		
+		</div>
 	</div>
 @endif
 
@@ -120,12 +120,12 @@
             <table class="table table-striped">
                 <thead>
                     <tr>
-                        <th>Order no.</th>
-                        <th>Date</th>
-                        <th>Customer</th>
-                        <th>Amount</th>
-                        <th>Status</th>
-                        <th>Options</th>
+                        <th>{{__('customer_msg.title_OrderNo')}}</th>
+                        <th>{{__('customer_msg.tb_header_Date')}}</th>
+                        <th>{{__('customer_msg.tb_Customer')}}</th>
+                        <th>{{__('customer_msg.tb_header_Amount')}}</th>
+                        <th>{{__('customer_msg.tb_header_Status')}}</th>
+                        <th>{{__('customer_msg.tb_header_Options')}}</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -150,7 +150,7 @@
                 </tbody>
             </table>
         </div>
-        
-        <a href="{{ backpack_url('order') }}" class="btn btn-danger">View all orders <i class="fa fa-arrow-right"></i></a>
+
+        <a href="{{ backpack_url('order') }}" class="btn btn-danger">{{__('customer_msg.btn_ViewAllOrders')}} <i class="fa fa-arrow-right"></i></a>
     </div>
 </div>
