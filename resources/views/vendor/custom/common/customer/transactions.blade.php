@@ -21,17 +21,17 @@
 		<a href="{{ backpack_url('customer') }}" class="hidden-print">
 			<i class="fa fa-angle-double-left"></i> Back to all  <span>customers</span>
 		</a><br><br>
-		
+
 		<form method="POST" action="{{ backpack_url('customer/transaction') }}">
 		  	@csrf
 		  	<div class="box">
 			    <div class="box-header with-border">
-			      	<h3 class="box-title">Add transaction</h3>
+			      	<h3 class="box-title">{{__('customer_msg.tran_Add')}}</h3>
 			    </div>
 		    	<div class="box-body row display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 		    		<input type="hidden" name="user_id" value="{{ $customer->id }}">
 					<div class="form-group col-md-6 col-xs-12 required {{ $errors->has('description') ? ' has-error' : '' }}">
-					    <label>Description</label>
+					    <label>{{__('customer_msg.tran_Desc')}}</label>
 				        <input name="description" value="" placeholder="Description" class="form-control" type="text">
 				        @if ($errors->has('description'))
                             <span class="help-block">
@@ -41,7 +41,7 @@
 				    </div>
 				    <div style="width: 100%"></div>
 				    <div class="form-group col-md-6 col-xs-12 required {{ $errors->has('credits') ? ' has-error' : '' }}">
-					    <label>Credits</label>
+					    <label>{{__('customer_msg.tran_Credits')}}</label>
 				        <input name="credits" placeholder="Credits" class="form-control" type="text">
 				        @if ($errors->has('credits'))
                             <span class="help-block">
@@ -51,7 +51,7 @@
 				    </div>
 				    <div style="width: 100%"></div>
 				    <div class="form-group col-md-6 col-xs-12 required {{ $errors->has('type') ? ' has-error' : '' }}">
-					    <label>Give or take</label>
+					    <label>{{__('customer_msg.tran_Give')}}</label>
 				        <select name="type" class="form-control">
 				        	<option value="">Select an option</option>
 				        	<option value="A">Give (+)</option>
@@ -69,10 +69,10 @@
 					    <div class="btn-group">
 					        <button type="submit" class="btn btn-danger">
 					            <span class="fa fa-save" role="presentation" aria-hidden="true"></span> &nbsp;
-					            <span>Save</span>
+					            <span>{{__('customer_msg.btn_Save')}}</span>
 					        </button>
 					    </div>
-					    <a href="{{ backpack_url('customer') }}" class="btn btn-default"><span class="fa fa-ban"></span> &nbsp;Cancel</a>
+					    <a href="{{ backpack_url('customer') }}" class="btn btn-default"><span class="fa fa-ban"></span> &nbsp;{{__('customer_msg.btn_Cancel')}}</a>
 					</div>
 		    	</div><!-- /.box-footer-->
 		  	</div><!-- /.box -->
@@ -84,18 +84,18 @@
     <div class="col-md-12">
     	<div class="box">
 		    <div class="box-header with-border">
-		      	<h3 class="box-title">Transaction history</h3>
+		      	<h3 class="box-title">{{__('customer_msg.tran_TranHistory')}}</h3>
 		    </div>
 	    	<div class="box-body display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 	    		<div class="table-responsive" style="width:100%">
 			        <table class="table table-striped">
 			            <thead>
 			                <tr>
-			                    <th>Description.</th>
-			                    <th>Credits</th>
-			                    <th>Status</th>
-			                    <th>Date</th>
-			                    <th>Option</th>
+			                    <th>{{__('customer_msg.tb_header_Description')}}.</th>
+                                <th>{{__('customer_msg.tb_header_Credits')}}.</th>
+                                <th>{{__('customer_msg.tb_header_Status')}}.</th>
+                                <th>{{__('customer_msg.tb_header_Date')}}.</th>
+                                <th>{{__('customer_msg.tb_header_Options')}}.</th>
 			                </tr>
 			            </thead>
 			            <tbody>

@@ -19,7 +19,7 @@ class FileServiceCrudController extends MasterController
 
     public function setup()
     {
-		
+
         /*
         |--------------------------------------------------------------------------
         | CrudPanel Basic Information
@@ -74,13 +74,13 @@ class FileServiceCrudController extends MasterController
             ], config('site.file_service_staus'), function($value) {
                 $this->crud->addClause('WHERE', 'status', $value);
         });
-        
+
         $this->crud->addFilter([
             'type' => 'date_range',
             'name' => 'created_at',
             'label' => 'Date range'
-            ], 
-            false, 
+            ],
+            false,
             function($value) {
                 $dates = json_decode($value);
                 $this->crud->query->whereDate('created_at','>=', $dates->from);
@@ -95,13 +95,13 @@ class FileServiceCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'displayable_id',
-            'label' => 'Job No'
+            'label' => __('customer_msg.tb_header_JobNo')
         ]);
 
         $this->crud->addColumn([
             'name' => 'car',
-            'label' => 'Car',
-            'searchLogic' => function ($query, $column, $searchTerm) { 
+            'label' => __('customer_msg.tb_header_Car'),
+            'searchLogic' => function ($query, $column, $searchTerm) {
                 $searchWords = explode(' ', $searchTerm);
                 if(count($searchWords)){
                     foreach ($searchWords as $key => $searchWord) {
@@ -113,19 +113,19 @@ class FileServiceCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'license_plate',
-            'label' => 'License Plate'
+            'label' => __('customer_msg.tb_header_License')
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Created at'
+            'label' => __('customer_msg.tb_header_CreatedAt')
         ]);
 
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
 
-    
+
     /**
      * Store resource
      * @param App\Http\Request\StoreRequest $request
@@ -190,9 +190,9 @@ class FileServiceCrudController extends MasterController
 				\Alert::error('Error in SMTP: '.__('admin.opps'))->flash();
 			}
         }*/
-        
+
         return $redirect_location;
-        
+
     }
 
     /**
@@ -274,7 +274,7 @@ class FileServiceCrudController extends MasterController
             \Alert::error(__('admin.opps'))->flash();
         }
         return redirect('admin/file-service');
-        
+
     }
 
     /**
@@ -296,7 +296,7 @@ class FileServiceCrudController extends MasterController
             \Alert::error(__('admin.opps'))->flash();
         }
         return redirect('admin/file-service');
-        
+
     }
 
     /**
@@ -306,7 +306,7 @@ class FileServiceCrudController extends MasterController
      */
     public function deleteModifiedFile(\App\Models\FileService $fileService){
         try{
-			
+
             if(\File::exists(public_path('uploads/file-services/modified/' . $fileService->modified_file))){
                 \File::delete(public_path('uploads/file-services/modified/' . $fileService->modified_file));
             }
@@ -314,23 +314,23 @@ class FileServiceCrudController extends MasterController
             $fileService->save();
             \Alert::success(__('admin.modified_file_deleted'))->flash();
         }catch(\Exception $e){
-			
+
             \Alert::error(__('admin.opps'))->flash();
         }
 
         return redirect('admin/file-service/'.$fileService->id.'/edit');
     }
-    
+
     /**
      * Create resource
      * @return $response
      */
     public function createTicket(\App\Models\FileService $fileService){
-      
+
         $data['fileService'] = $fileService;
         $data['crud'] = $this->crud;
         $data['entry'] = $this->crud;
-		
+
         return view('vendor.custom.common.file_service.ticket', $data);
     }
     /**

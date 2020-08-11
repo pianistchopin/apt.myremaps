@@ -29,7 +29,7 @@ class TuningCreditCrudController extends MasterController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-        
+
         $this->crud->addButtonFromView('top', 'add_credit_tire', 'add_credit_tire' , 'end');
         $this->crud->addButtonFromView('line', 'default', 'default' , 'end');
         $this->crud->setEditView('vendor.custom.common.settings.edit_credit_price_group');
@@ -48,26 +48,26 @@ class TuningCreditCrudController extends MasterController
         | Basic Crud column Configuration
         |--------------------------------------------------------------------------
         */
-		
+
 		//changes
 			$this->crud->addColumn([
 				'name' => 'set_default_tier',
-				'label' => 'Set Default Tier',
+				'label' => __('customer_msg.tb_header_SetDefault'),
 				'type' => "model_function",
 				'function_name' => 'set_default_tier',
-				
+
 			]);
-		
+
         $this->crud->addColumn([
             'name' => 'name',
-            'label' => 'Group',
+            'label' => __('customer_msg.tb_header_Group'),
         ]);
 
         if($tuningCreditTires->count() > 0){
             foreach($tuningCreditTires->take(5) as $tuningCreditTire){
                 $this->crud->addColumn([
                     'name' => $tuningCreditTire->amount.'_credit',
-                    'label' => $tuningCreditTire->amount.' credit',
+                    'label' => $tuningCreditTire->amount.' '.__('customer_msg.tb_header_Credit'),
                     'type' => "group_credit_tire_price",
                     'credit_tire' => $tuningCreditTire
                 ]);
@@ -76,22 +76,22 @@ class TuningCreditCrudController extends MasterController
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
-	
+
 	//changes
 	public function set_default_tier(Request $request){
 		$id = $request->id;
-		
+
 		$tuningCreditTires = \App\Models\TuningCreditGroup::find($id);
-		
+
 		$company_id = $tuningCreditTires->company_id;
 		\App\Models\TuningCreditGroup::where('company_id', $company_id)->update(['set_default_tier' => '0']);
-		
-		
+
+
 		$tuningCreditTires->set_default_tier =1;
 		$tuningCreditTires->save(['set_default_tier' => '1']);
 		return 1;
 	}
-	
+
     /**
      * Store resource
      * @param App\Http\Request\StoreRequest $request
@@ -102,7 +102,7 @@ class TuningCreditCrudController extends MasterController
         $request->request->add(['company_id'=> $this->company->id]);
         $redirect_location = parent::storeCrud($request);
         $tuningCreditGroup = $this->crud->entry;
-        
+
         if($request->has('credit_tires')){
             $tuningCreditGroup->tuningCreditTires()->sync($request->credit_tires);
         }
@@ -119,7 +119,7 @@ class TuningCreditCrudController extends MasterController
 
         $id = $this->crud->getCurrentEntryId() ?? $id;
         $entry = $this->crud->getEntry($id);
-        
+
         if($this->company->id != $entry->company->id){
             abort(403, __('admin.no_permission'));
         }
@@ -144,7 +144,7 @@ class TuningCreditCrudController extends MasterController
     {
         $redirect_location = parent::updateCrud($request);
         $tuningCreditGroup = $this->crud->entry;
-        
+
         if($request->has('credit_tires')){
             $tuningCreditGroup->tuningCreditTires()->sync($request->credit_tires);
         }

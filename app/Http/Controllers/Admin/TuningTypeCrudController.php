@@ -45,19 +45,19 @@ class TuningTypeCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'label',
-            'label' => 'Label',
+            'label' => __('customer_msg.tb_header_Label'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'credits',
-            'label' => 'Credits',
+            'label' => __('customer_msg.tb_header_Credit'),
         ]);
 
         $this->crud->addColumn([
-            'label' => "Tuning options",
+            'label' => __('customer_msg.tb_header_TuningOptions'),
             'type' => "model_function",
-            'function_name' => 'getTuningOptionsWithLink', 
-        ]); 
+            'function_name' => 'getTuningOptionsWithLink',
+        ]);
 
         /*
         |--------------------------------------------------------------------------
@@ -115,7 +115,7 @@ class TuningTypeCrudController extends MasterController
 
         $id = $this->crud->getCurrentEntryId() ?? $id;
         $entry = $this->crud->getEntry($id);
-        
+
         if($this->company->id != $entry->company->id){
             abort(403, __('admin.no_permission'));
         }

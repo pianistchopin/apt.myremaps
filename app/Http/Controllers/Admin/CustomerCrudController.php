@@ -31,7 +31,7 @@ class CustomerCrudController extends MasterController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-        
+
         $this->crud->addButtonFromView('line', 'customer_file_service', 'show_customer_file_service', 'end');
         $this->crud->addButtonFromView('line', 'switch_account', 'switch_account' , 'end');
         $this->crud->addButtonFromView('line', 'show_customer_transaction', 'show_customer_transaction' , 'end');
@@ -51,49 +51,49 @@ class CustomerCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'full_name',
-            'label' => 'Name',
+            'label' => __('customer_msg.tb_header_Name'),
             'class' => 'exportable'
         ]);
 
         $this->crud->addColumn([
             'name' => 'business_name',
-            'label' => 'Company',
+            'label' => __('customer_msg.tb_header_Company'),
             'class' => 'exportable'
         ]);
 
         $this->crud->addColumn([
             'name' => 'user_tuning_credits',
-            'label' => 'Tuning credits',
+            'label' => __('customer_msg.tb_header_TuningCredits'),
             'class' => 'exportable'
         ]);
 
         $this->crud->addColumn([
             'name' => 'file_services_count',
-            'label' => 'File services',
+            'label' => __('customer_msg.tb_header_FileService'),
             'class' => 'exportable'
         ]);
 
         $this->crud->addColumn([
             'name' => 'tuning_price_group',
-            'label' => 'Tuning price group',
+            'label' => __('customer_msg.tb_header_TuningPriceGroup'),
             'class' => 'exportable'
         ]);
 
         $this->crud->addColumn([
             'name' => 'last_login',
-            'label' => 'Last login',
+            'label' => __('customer_msg.tb_header_Lastlogin'),
             'class' => 'exportable'
-        ]); 
+        ]);
 
         /*
         |--------------------------------------------------------------------------
         | Basic Crud Field Configuration
         |--------------------------------------------------------------------------
         */
-        
+
         $this->crud->addField([
             'name' => 'tuning_credit_group_id',
-            'label' => "Tuning price type",
+            'label' => __('customer_msg.contactInfo_TuningPriceType'),
             'type' => 'select2_from_array',
             'options' => \App\Models\TuningCreditGroup::where('company_id', $user->company_id)->orderBy('is_default', 'DESC')->pluck('name', 'id'),
             'allows_null' => true,
@@ -102,7 +102,7 @@ class CustomerCrudController extends MasterController
 
         $this->crud->addField([
             'name' => 'lang',
-            'label' => "Language",
+            'label' => __('customer_msg.contactInfo_Language'),
             'type' => 'select_from_array',
             'options' => ['en'=> 'English'],
             'allows_null' => false,
@@ -116,7 +116,7 @@ class CustomerCrudController extends MasterController
 
         $this->crud->addField([
             'name' => 'title',
-            'label' => "Title",
+            'label' => __('customer_msg.contactInfo_Title'),
             'type' => 'select_from_array',
             'options' => ['Mr'=> 'Mr', 'Ms' => 'Ms'],
             'allows_null' => false,
@@ -126,7 +126,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'first_name',
             'type' => 'text',
-            'label' => "First name",
+            'label' => __('customer_msg.contactInfo_FirstName'),
             'attributes'=>['placeholder'=>'First name'],
             'wrapperAttributes'=>['class'=>'form-group col-md-3 col-xs-12']
         ]);
@@ -134,7 +134,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'last_name',
             'type' => 'text',
-            'label' => "Last name",
+            'label' => __('customer_msg.contactInfo_LastName'),
             'attributes'=>['placeholder'=>'Last name'],
             'wrapperAttributes'=>['class'=>'form-group col-md-3 col-xs-12']
         ]);
@@ -145,7 +145,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'business_name',
             'type' => 'text',
-            'label' => "Business name",
+            'label' => __('customer_msg.contactInfo_BusinessName'),
             'attributes'=>['placeholder'=>'Business name'],
             'wrapperAttributes'=>['class'=>'form-group col-md-4 col-xs-12']
         ]);
@@ -153,7 +153,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'email',
             'type' => 'text',
-            'label' => "Email",
+            'label' => __('customer_msg.contactInfo_Email'),
             'attributes'=>['placeholder'=>'Email'],
             'wrapperAttributes'=>['class'=>'form-group col-md-4 col-xs-12']
         ]);
@@ -166,7 +166,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'address_line_1',
             'type' => 'text',
-            'label' => "Address line 1",
+            'label' => __('customer_msg.contactInfo_AddressLine1'),
             'attributes'=>['placeholder'=>'Address line 1'],
             'wrapperAttributes'=>['class'=>'form-group col-md-4 col-xs-12']
         ]);
@@ -174,7 +174,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'address_line_2',
             'type' => 'text',
-            'label' => "Address line 2 <small class='text-muted'>(optional)</small>",
+            'label' => __('customer_msg.contactInfo_AddressLine2')."<small class='text-muted'>(".__('customer_msg.service_Optional').")</small>",
             'attributes'=>['placeholder'=>'Address line 2'],
             'wrapperAttributes'=>['class'=>'form-group col-md-4 col-xs-12']
         ]);
@@ -183,11 +183,11 @@ class CustomerCrudController extends MasterController
             'name'=> 'blank4',
             'type' => 'blank',
         ]);
-        
+
         $this->crud->addField([
             'name' => 'town',
             'type' => 'text',
-            'label' => "Town",
+            'label' => __('customer_msg.contactInfo_Town'),
             'attributes'=>['placeholder'=>'Town'],
             'wrapperAttributes'=>['class'=>'form-group col-md-3 col-xs-12']
         ]);
@@ -195,7 +195,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'post_code',
             'type' => 'text',
-            'label' => "Post code <small class='text-muted'>(optional)</small>",
+            'label' => __('customer_msg.contactInfo_PostCode')."<small class='text-muted'>(".__('customer_msg.service_Optional').")</small>",
             'attributes'=>['placeholder'=>'Zip code'],
             'wrapperAttributes'=>['class'=>'form-group col-md-2 col-xs-12']
         ]);
@@ -203,7 +203,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'county',
             'type' => 'text',
-            'label' => "County",
+            'label' => __('customer_msg.contactInfo_County'),
             'attributes'=>['placeholder'=>'county'],
             'wrapperAttributes'=>['class'=>'form-group col-md-3 col-xs-12']
         ]);
@@ -216,7 +216,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'phone',
             'type' => 'text',
-            'label' => "Phone",
+            'label' => __('customer_msg.contactInfo_Phone'),
             'attributes'=>['placeholder'=>'Phone'],
             'wrapperAttributes'=>['class'=>'form-group col-md-4 col-xs-12']
         ]);
@@ -224,7 +224,7 @@ class CustomerCrudController extends MasterController
         $this->crud->addField([
             'name' => 'tools',
             'type' => 'textarea',
-            'label' => "Tools <small class='text-muted'>(optional)</small>",
+            'label' => __('customer_msg.contactInfo_Tools')."<small class='text-muted'>(".__('customer_msg.service_Optional').")</small>",
             'attributes'=>['placeholder'=>'Tools'],
             'wrapperAttributes'=>['class'=>'form-group col-md-4 col-xs-12']
         ]);
@@ -254,7 +254,7 @@ class CustomerCrudController extends MasterController
             \Alert::error(__('admin.opps'))->flash();
             return redirect(url('admin/customer'));
         }
-        
+
     }
 
     /**
@@ -294,7 +294,7 @@ class CustomerCrudController extends MasterController
             \Alert::error(__('admin.opps'))->flash();
             return redirect(url('admin/customer'));
         }
-        
+
     }
 
     /**
@@ -308,7 +308,7 @@ class CustomerCrudController extends MasterController
 			try{
 				\Mail::to($user->email)->send(new WelcomeCustomer($user, $token));
 			}catch(\Exception $e){
-				
+
 				\Alert::error('Error in SMTP: '.__('admin.opps'))->flash();
 			}
             \Alert::success(__('admin.password_reset_link_send'))->flash();
@@ -349,11 +349,11 @@ class CustomerCrudController extends MasterController
             $transaction = new \App\Models\Transaction($request->all());
             $user = $transaction->user;
             if($transaction->save()){
-                
+
                 if($transaction->type == 'A'){
                     $totalCredits = ($user->tuning_credits+$transaction->credits);
                 }else{
-                   $totalCredits = ($user->tuning_credits-$transaction->credits); 
+                   $totalCredits = ($user->tuning_credits-$transaction->credits);
                 }
 
                 $user->tuning_credits = $totalCredits;

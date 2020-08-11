@@ -46,7 +46,7 @@ class CompanyCrudController extends MasterController
         $this->crud->addButtonFromView('line', 'resend_company_password_reset_link', 'resend_company_password_reset_link' , 'end');
         $this->crud->addButtonFromView('line', 'switch_account_as_company', 'switch_account_as_company' , 'end');
         $this->crud->addButtonFromView('line', 'free_customer_subscribe', 'free_customer_subscribe' , 'end');
-        //changes 
+        //changes
 			$this->crud->addButtonFromView('line', 'is_public', 'is_public' , 'end');
 			$this->crud->addButtonFromView('line', 'is_active', 'is_active' , 'end');
         $user = \Auth::guard('admin')->user();
@@ -159,7 +159,7 @@ class CompanyCrudController extends MasterController
             'type' => 'blank',
             'tab' => 'Name and address'
         ]);
-        
+
         $this->crud->addField([
             'name' => 'country',
             'label' => "Country",
@@ -174,7 +174,7 @@ class CompanyCrudController extends MasterController
             'type' => 'blank',
             'tab' => 'Name and address'
         ]);
-        
+
         $this->crud->addField([
             'name' => 'state',
             'label' => "State/Province <small class='text-muted'>(optional)</small>",
@@ -189,7 +189,7 @@ class CompanyCrudController extends MasterController
             'type' => 'blank',
             'tab' => 'Name and address'
         ]);
-        
+
         $this->crud->addField([
             'name' => 'file',
             'label' => "Logo <small class='text-muted'>(optional)</small>",
@@ -205,7 +205,7 @@ class CompanyCrudController extends MasterController
             'type' => 'blank',
             'tab' => 'Name and address'
         ]);
-        
+
 		//changes
 			/*$this->crud->addField([
 				'name' => 'rating',
@@ -220,7 +220,7 @@ class CompanyCrudController extends MasterController
 				'type' => 'blank',
 				'tab' => 'Name and address'
 			]);*/
-		
+
         $this->crud->addField([
             'name' => 'theme_color',
             'label' => "Theme color <small class='text-muted'>(optional)</small>",
@@ -235,7 +235,7 @@ class CompanyCrudController extends MasterController
             'type' => 'blank',
             'tab' => 'Name and address'
         ]);
-        
+
         $this->crud->addField([
             'name' => 'copy_right_text',
             'label' => "Copy right text <small class='text-muted'>(optional)</small>",
@@ -356,7 +356,7 @@ class CompanyCrudController extends MasterController
             'attributes'=>['placeholder'=>'Notes to customers'],
             'wrapperAttributes'=>['class'=>'form-group col-md-6 col-xs-12']
         ]);
-		
+
 		/*$this->crud->addField([
             'name' => 'more_info',
             'label' => "More Info <small class='text-muted'>(Max 255 characters)</small>",
@@ -365,7 +365,7 @@ class CompanyCrudController extends MasterController
             'attributes'=>['placeholder'=>'More Info','maxlength'=>'255'],
             'wrapperAttributes'=>['class'=>'form-group col-md-6 col-xs-12']
         ]);*/
-		
+
         $this->crud->addField([
             'name' => 'mail_driver',
             'label' => "Mail driver <small class='text-muted'>(optional)</small>",
@@ -472,7 +472,7 @@ class CompanyCrudController extends MasterController
             'type' => 'blank',
             'tab' => 'Paypal information'
         ], 'create');
-        
+
         $this->crud->addField([
             'name' => 'paypal_currency_code',
             'label' => "Paypal currency code <small class='text-muted'>(optional)</small>",
@@ -486,8 +486,8 @@ class CompanyCrudController extends MasterController
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
-	
-	
+
+
 	//changes
 	public function companyAccountType($id){
 		$company = Company::where('id',$id)->first();
@@ -503,7 +503,7 @@ class CompanyCrudController extends MasterController
 		}
 		return redirect(backpack_url($return));
 	}
-	
+
 	public function accountActivate( $companyId){
 		$company = \App\Models\Company::find($companyId);
 		$companyUser = $company->owner;
@@ -516,7 +516,7 @@ class CompanyCrudController extends MasterController
 			$companyUser->is_active = 1;
 			$companyUser->Save();
 			$token = app('auth.password.broker')->createToken($companyUser);
-			
+
 			/*Config::set('mail.driver', $this->company->mail_driver);
 			Config::set('mail.host', 'mail.24livehost.com');
 			Config::set('mail.port', 25);
@@ -527,8 +527,8 @@ class CompanyCrudController extends MasterController
 			Config::set('mail.from.name', 'advancedtuning');
 			Config::set('app.name', $this->company->name);
 			Config::set('backpack.base.project_name', $this->company->name);
-		
-			
+
+
 			Config::set('mail.driver', 'smtp');
 			Config::set('mail.host', 'localhost');
 			Config::set('mail.port', 25);
@@ -539,7 +539,7 @@ class CompanyCrudController extends MasterController
 			Config::set('mail.from.name', 'noreply');
 			Config::set('app.name', $this->company->name);
 			Config::set('backpack.base.project_name', $this->company->name);
-			
+
 */
 			\Alert::success('Comapny has been activated successfully.')->flash();
 			try{
@@ -547,11 +547,11 @@ class CompanyCrudController extends MasterController
 			}catch(\Exception $e){
 				\Alert::error('Error in SMTP: '.__('admin.opps'))->flash();
 			}
-			
+
 		}
 		return redirect(backpack_url('company'));
 	}
-	
+
      /**
      * Store resource
      * @param App\Http\Request\StoreRequest $request
@@ -562,18 +562,18 @@ class CompanyCrudController extends MasterController
         switch($request->current_tab){
             case 'nameandaddress':
                 $validator = Validator::make($request->only(['name', 'country', 'state', 'town', 'address_line_1', 'address_line_2', 'post_code', 'logo', 'theme_color', 'copy_right_text']),[
-                    'name' => 'bail|required|string|max:100', 
-                    'address_line_1'=> 'bail|required|string|max:100', 
-                    'address_line_2'=> 'bail|nullable|string|max:100', 
-                    'town'=> 'bail|required|string|max:50', 
-                    'post_code'=> 'bail|nullable|string|max:30', 
-                    'country'=> 'bail|required|string|max:50', 
+                    'name' => 'bail|required|string|max:100',
+                    'address_line_1'=> 'bail|required|string|max:100',
+                    'address_line_2'=> 'bail|nullable|string|max:100',
+                    'town'=> 'bail|required|string|max:50',
+                    'post_code'=> 'bail|nullable|string|max:30',
+                    'country'=> 'bail|required|string|max:50',
                     'state'=> 'bail|nullable|string|max:50',
 					//'rating'=> 'bail|nullable|string|max:50',
-                    'file'=> 'bail|nullable|image|mimes:jpg,png,jpeg', 
+                    'file'=> 'bail|nullable|image|mimes:jpg,png,jpeg',
                     'copy_right_text'=> 'bail|nullable|string|max:100'
                 ]);
-                
+
                 $requestData->replace($request->only(['name', 'country', 'state', 'town', 'address_line_1', 'address_line_2', 'post_code', 'logo', 'theme_color', 'copy_right_text']));
                 break;
             case 'domaininformation':
@@ -584,16 +584,16 @@ class CompanyCrudController extends MasterController
                 break;
             case 'emailaddress':
                 $validator = Validator::make($request->only(['main_email_address', 'support_email_address', 'billing_email_address']), [
-                    'main_email_address'=> 'bail|required|email|unique:companies,main_email_address|unique:users,email|max:100', 
-                    'support_email_address'=> 'bail|nullable|email|max:100', 
+                    'main_email_address'=> 'bail|required|email|unique:companies,main_email_address|unique:users,email|max:100',
+                    'support_email_address'=> 'bail|nullable|email|max:100',
                     'billing_email_address'=> 'bail|nullable|email|max:100'
                 ]);
                 $requestData->replace($request->only(['main_email_address', 'support_email_address', 'billing_email_address']));
                 break;
             case 'financialinformation':
                 $validator = Validator::make($request->only(['bank_account', 'bank_identification_code', 'vat_number', 'vat_percentage']), [
-                    'bank_account'=> 'bail|nullable|string|max:100', 
-                    'bank_identification_code'=> 'bail|nullable|string|max:100',  
+                    'bank_account'=> 'bail|nullable|string|max:100',
+                    'bank_identification_code'=> 'bail|nullable|string|max:100',
                     'vat_number'=> 'bail|nullable|string|max:100',
                     'vat_percentage'=> 'bail|nullable|required_with:vat_number|regex:/^\d*(\.\d{1,2})?$/|max:8'
                 ]);
@@ -605,13 +605,13 @@ class CompanyCrudController extends MasterController
                 ]);
                 $requestData->replace($request->only('customer_note'));
                 break;
-				
+
             case 'smtpinformation':
                 $validator = Validator::make($requestData = $request->only(['mail_host', 'mail_port', 'mail_username', 'mail_password']), [
-                    'mail_driver'=> 'bail|nullable|string|max:20', 
-                    'mail_host'=> 'bail|nullable|string|max:100', 
-                    'mail_port'=> 'bail|nullable|integer', 
-                    'mail_username'=> 'bail|nullable|email|max:100', 
+                    'mail_driver'=> 'bail|nullable|string|max:20',
+                    'mail_host'=> 'bail|nullable|string|max:100',
+                    'mail_port'=> 'bail|nullable|integer',
+                    'mail_username'=> 'bail|nullable|email|max:100',
                     'mail_password'=> 'bail|nullable|string|max:100'
                 ]);
                 $requestData->replace($request->only(['mail_host', 'mail_port', 'mail_username', 'mail_password']));
@@ -640,7 +640,7 @@ class CompanyCrudController extends MasterController
             $company = $this->crud->entry;
 			//$company->rating = $request-> rating;
 			//$company->more_info = $request->more_info;
-			
+
             if($request->hasFile('file')){
                 if($request->file('file')->isValid()){
                     $file = $request->file('file');
@@ -721,19 +721,19 @@ class CompanyCrudController extends MasterController
         switch($request->current_tab){
             case 'nameandaddress':
                 $validator = Validator::make($request->only(['name', 'country', 'state', 'town', 'address_line_1', 'address_line_2', 'post_code', 'logo', 'theme_color', 'copy_right_text']),[
-                    'name' => 'bail|required|string|max:100', 
-                    'address_line_1'=> 'bail|required|string|max:100', 
-                    'address_line_2'=> 'bail|nullable|string|max:100', 
-                    'town'=> 'bail|required|string|max:50', 
-                    'post_code'=> 'bail|nullable|string|max:30', 
-                    'country'=> 'bail|required|string|max:50', 
+                    'name' => 'bail|required|string|max:100',
+                    'address_line_1'=> 'bail|required|string|max:100',
+                    'address_line_2'=> 'bail|nullable|string|max:100',
+                    'town'=> 'bail|required|string|max:50',
+                    'post_code'=> 'bail|nullable|string|max:30',
+                    'country'=> 'bail|required|string|max:50',
                     'state'=> 'bail|nullable|string|max:50',
 					//'rating'=> 'bail|nullable|string|max:50',
-                    'file'=> 'bail|nullable|image|mimes:jpg,png,jpeg', 
+                    'file'=> 'bail|nullable|image|mimes:jpg,png,jpeg',
                     'copy_right_text'=> 'bail|nullable|string|max:100'
                 ]);
                 $requestData->replace($request->only(['id', 'name', 'country', 'state', 'town', 'address_line_1', 'address_line_2', 'post_code', 'logo', 'theme_color','copy_right_text']));
-                
+
                 break;
             case 'domaininformation':
                 $validator = Validator::make($request->only('domain_link'), [
@@ -743,17 +743,17 @@ class CompanyCrudController extends MasterController
                 break;
             case 'emailaddress':
                 $validator = Validator::make($request->only(['main_email_address', 'support_email_address', 'billing_email_address']), [
-                    'main_email_address'=> 'bail|required|email|unique:companies,main_email_address,'.$request->id.',id|unique:users,email,'.$request->id.',company_id|max:100', 
-                    'support_email_address'=> 'bail|nullable|email|max:100', 
+                    'main_email_address'=> 'bail|required|email|unique:companies,main_email_address,'.$request->id.',id|unique:users,email,'.$request->id.',company_id|max:100',
+                    'support_email_address'=> 'bail|nullable|email|max:100',
                     'billing_email_address'=> 'bail|nullable|email|max:100'
                 ]);
-               
+
                   $requestData->replace($request->only(['id', 'main_email_address', 'support_email_address', 'billing_email_address']));
                 break;
             case 'financialinformation':
                 $validator = Validator::make($request->only(['bank_account', 'bank_identification_code', 'vat_number', 'vat_percentage']), [
-                    'bank_account'=> 'bail|nullable|string|max:100', 
-                    'bank_identification_code'=> 'bail|nullable|string|max:100',  
+                    'bank_account'=> 'bail|nullable|string|max:100',
+                    'bank_identification_code'=> 'bail|nullable|string|max:100',
                     'vat_number'=> 'bail|nullable|string|max:100',
                     'vat_percentage'=> 'bail|nullable|required_with:vat_number|regex:/^\d*(\.\d{1,2})?$/|max:8'
                 ]);
@@ -767,10 +767,10 @@ class CompanyCrudController extends MasterController
                 break;
             case 'smtpinformation':
                 $validator = Validator::make($requestData = $request->only(['mail_host', 'mail_port', 'mail_username', 'mail_password']), [
-                    'mail_driver'=> 'bail|nullable|string|max:20', 
-                    'mail_host'=> 'bail|nullable|string|max:100', 
-                    'mail_port'=> 'bail|nullable|integer', 
-                    'mail_username'=> 'bail|nullable|email|max:100', 
+                    'mail_driver'=> 'bail|nullable|string|max:20',
+                    'mail_host'=> 'bail|nullable|string|max:100',
+                    'mail_port'=> 'bail|nullable|integer',
+                    'mail_username'=> 'bail|nullable|email|max:100',
                     'mail_password'=> 'bail|nullable|string|max:100'
                 ]);
                 $requestData->replace($request->only(['id', 'mail_host', 'mail_port', 'mail_username', 'mail_password']));
@@ -793,9 +793,9 @@ class CompanyCrudController extends MasterController
                         ->withErrors($validator)
                         ->withInput();
         }
-       
+
         $redirect_location = parent::updateCrud($requestData);
-        
+
         $company = $this->crud->entry;
 		//$company->rating = $request-> rating;
 		//$company->more_info = $request->more_info;
@@ -803,15 +803,15 @@ class CompanyCrudController extends MasterController
             if($request->file('file')->isValid()){
                 $file = $request->file('file');
                 $filename = time() . '.' . $file->getClientOriginalExtension();
-                
-				
+
+
 				$file = $file->move(public_path('/uploads/logo'), $filename);
 				//dd($file);
                 $company->logo = $filename;
             }
         }
 		$company->save();
-		
+
         if($company->owner == NULL){
             /* register company*/
             if($company->name && $company->main_email_address && $company->address_line_1 && $company->town && $company->country && $company->domain_link){
@@ -906,7 +906,7 @@ class CompanyCrudController extends MasterController
         }
         return redirect(url('admin/company'));
     }
-    
+
     /**
      * show company subscriptions
      * @param \App\Models\Company $company
@@ -959,6 +959,6 @@ class CompanyCrudController extends MasterController
             \Alert::error(__('admin.opps'))->flash();
             return redirect()->back()->withInput($request->all());
         }
-        
+
     }
 }

@@ -29,7 +29,7 @@ class TransactionCrudController extends MasterController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-        
+
         $this->crud->removeButton('create');
         $this->crud->removeButton('update');
         $this->crud->denyAccess('create');
@@ -73,18 +73,18 @@ class TransactionCrudController extends MasterController
 //            'type' => 'date',
 //            'name' => 'created_at',
 //            'label' => 'Transaction Date'
-//            ], 
-//            false, 
+//            ],
+//            false,
 //            function($value) {
 //                $this->crud->query->whereDate('created_at', $value);
 //        });
-        
+
         $this->crud->addFilter([
             'type' => 'date_range',
             'name' => 'created_at',
             'label' => 'From/To Date'
-            ], 
-            false, 
+            ],
+            false,
             function($value) {
                 $dates = json_decode($value);
                 $this->crud->query->whereDate('created_at','>=', $dates->from);
@@ -99,22 +99,22 @@ class TransactionCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'description',
-            'label' => 'Description',
+            'label' => __('customer_msg.tb_header_Description'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'credits_with_type',
-            'label' => 'Credits',
+            'label' => __('customer_msg.tb_header_Credits'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'status',
-            'label' => 'Status'
+            'label' => __('customer_msg.tb_header_Status'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Date',
+            'label' => __('customer_msg.tb_header_Date'),
         ]);
 
         $this->crud->setRequiredFields(StoreRequest::class, 'create');

@@ -14,7 +14,7 @@ use App\Mail\TicketFileCreated;
  */
 class TicketsCrudController extends MasterController
 {
-    
+
     public function setup()
     {
         /*
@@ -33,9 +33,9 @@ class TicketsCrudController extends MasterController
 
         $this->crud->query->where('parent_chat_id', 0)->where(function($query) use($user){
             return $query->where('receiver_id', $user->id)->orWhere('sender_id', $user->id);
-        }); 
-        
-        //$this->crud->query->where('file_servcie_id', 0); 
+        });
+
+        //$this->crud->query->where('file_servcie_id', 0);
 			//$this->crud->query->WhereNull('subject');
         $this->crud->query->orderBy('id', 'DESC');
         /*
@@ -43,45 +43,45 @@ class TicketsCrudController extends MasterController
         | CrudPanel Configuration
         |--------------------------------------------------------------------------
         */
-		
+
 		$this->crud->addColumn([
-			'label' => "#", 
-		    'name' => 'is_read', 
+			'label' => "#",
+		    'name' => 'is_read',
 			'type' => "model_function",
 			'function_name' => 'getUnreadMessage',
-		    
+
 		]);
 
         $this->crud->addColumn([
            'name' => 'client',
-           'label' => 'Client'
+           'label' => __('customer_msg.tb_header_Client')
         ]);
 
         $this->crud->addColumn([
            'name' => 'file_service_name',
-           'label' => 'File Service'
+            'label' => __('customer_msg.tb_header_FileService')
         ]);
 
-        
+
         $this->crud->addColumn([
             'name' => 'is_closed',
-            'label' => 'Ticket Status',
+            'label' => __('customer_msg.tb_header_TicketStatus'),
             'type'=>'boolean',
             'options'=>[0=>'Open', 1=>'Closed']
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Created',
+            'label' => __('customer_msg.tb_header_Created'),
         ]);
-		
-		
-        
+
+
+
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }
-    
-    
+
+
   /**
      * Edit resource
      * @param (int) $id
@@ -102,12 +102,12 @@ class TicketsCrudController extends MasterController
         /*
         $update=\App\Models\Tickets::where('receiver_id',$this->user->id)->where(function($query) use($entry){
             return $query->where('parent_chat_id',$entry->id)->orWhere('parent_chat_id',0);
-        })->update(['is_read'=>1]); 
+        })->update(['is_read'=>1]);
 		  */
         $update=\App\Models\Tickets::where('receiver_id',$this->user->id)->where(function($query) use($entry){
             return $query->where('parent_chat_id',$entry->id)->orWhere('id',$entry->id);
         })->update(['is_read'=>1]);
-		
+
         $data['entry'] = $entry;
         $data['crud'] = $this->crud;
         $data['messages'] = $messages;
@@ -118,7 +118,7 @@ class TicketsCrudController extends MasterController
         $data['id'] = $id;
         return view($this->crud->getEditView(), $data);
     }
-    
+
     /**
      * Update resource
      * @param UpdateRequest $request
@@ -130,7 +130,7 @@ class TicketsCrudController extends MasterController
         try{
             if(!empty($request->message) || !empty($request->uploaded_file))
             {
-                
+
                 $tickets = new \App\Models\Tickets();
                 $tickets->parent_chat_id = $ticket->id;
                 $tickets->sender_id = $this->user->id;
@@ -141,7 +141,7 @@ class TicketsCrudController extends MasterController
                 }
                 $tickets->message = $request->message;
                 $tickets->subject = $ticket->subject;
-                
+
                 if($request->uploaded_file != null){
                     $tickets->document = $request->uploaded_file;
                 }
@@ -162,7 +162,7 @@ class TicketsCrudController extends MasterController
             return redirect(url('admin/tickets'));
         }
     }
-    
+
     /**
      * Upload file
      * @param \Illuminate\Http\Request $request
@@ -173,10 +173,10 @@ class TicketsCrudController extends MasterController
             if($request->file('document')->isValid()){
                 $file = $request->file('document');
                 $ext = $file->getClientOriginalExtension();
-				
+
 				$fileNameExt = $file->getClientOriginalName();
 				$fileNameOnly = explode('.',$fileNameExt)[0];
-				
+
                 if(!isset($ext)){
                     $filename = $fileNameOnly."-".time() . '.dat';
                 }
@@ -197,7 +197,7 @@ class TicketsCrudController extends MasterController
             return response()->json(['status'=> FALSE], 404);
         }
     }
-    
+
     /**
      * download orginal file
      * @param \App\Models\FileService $fileService
@@ -205,11 +205,11 @@ class TicketsCrudController extends MasterController
      */
     public function downloadFile(\App\Models\Tickets $ticket){
         try{
-            $file = public_path('uploads/tickets/' . $ticket->document);    
+            $file = public_path('uploads/tickets/' . $ticket->document);
             if(\File::exists($file)){
                 $fileExt = \File::extension($file);
                 $fileName = $ticket->id.'-document.'.$fileExt;
-               
+
                 return response()->download($file, $fileName);
             }else{
                 \Alert::error(__('admin.opps'))->flash();
@@ -219,7 +219,7 @@ class TicketsCrudController extends MasterController
         }
         return redirect('admin/tickets');
     }
-    
+
     /**
      * download orginal file
      * @param \App\Models\FileService $fileService
@@ -243,11 +243,11 @@ class TicketsCrudController extends MasterController
      */
     public function destroy($id)
     {
-        $this->crud->hasAccessOrFail('delete'); 
+        $this->crud->hasAccessOrFail('delete');
         $path = public_path()."/uploads/tickets/";
 		$fileDeleteParent = \App\Models\Tickets::where('parent_chat_id',$id)->get()->toArray();
-		
-		
+
+
         $res = \App\Models\Tickets::where('parent_chat_id',$id)->delete();
 		if(!empty($fileDeleteParent)) {
 			foreach($fileDeleteParent as $val) {
@@ -258,7 +258,7 @@ class TicketsCrudController extends MasterController
 				}
 			}
 		}
-		
+
 		$fileDelete = \App\Models\Tickets::find($id)->document;
 		if($fileDelete) {
 			if(\File::exists($path."".$fileDelete)){

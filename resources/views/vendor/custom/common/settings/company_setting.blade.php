@@ -47,7 +47,7 @@
 				              		@endif
 				              	">
 					              	<a href="#name_and_address" data-tab-name="name_and_address" data-toggle="tab" aria-expanded="true">
-						              	Name and address
+                                        {{__('customer_msg.company_NameAddr')}}
 						            </a>
 				              	</li>
 				              	<li class="
@@ -58,7 +58,7 @@
 				              		@endif
 				              	">
 					              	<a href="#email_addresses" data-tab-name="email_addresses" data-toggle="tab" aria-expanded="true">
-						              	Email addresses
+                                        {{__('customer_msg.company_EmailAddr')}}
 						            </a>
 				              	</li>
 				              	<li class="
@@ -69,7 +69,7 @@
 				              		@endif
 				              	">
 					              	<a href="#financial_information" data-tab-name="financial_information" data-toggle="tab" aria-expanded="true">
-						              	Financial information
+                                        {{__('customer_msg.company_Financial')}}
 						            </a>
 				              	</li>
 				              	<li class="
@@ -80,7 +80,7 @@
 				              		@endif
 				              	">
 					              	<a href="#notes_to_customers" data-tab-name="notes_to_customers" data-toggle="tab" aria-expanded="true">
-						              	Notes to customers
+                                        {{__('customer_msg.company_NotesCustomers')}}
 						            </a>
 				              	</li>
 				              	<li class="
@@ -91,7 +91,7 @@
 				              		@endif
 				              	">
 					              	<a href="#smtp_setting" data-tab-name="smtp_setting" data-toggle="tab" aria-expanded="true">
-						              	SMTP Information
+                                        {{__('customer_msg.company_SMTPinfo')}}
 						            </a>
 				              	</li>
 				              	<li class="
@@ -102,7 +102,7 @@
 				              		@endif
 				              	">
 					              	<a href="#paypal_setting" data-tab-name="paypal_setting" data-toggle="tab" aria-expanded="true">
-						              	Paypal Information
+                                        {{__('customer_msg.company_Paypalinfo')}}
 						            </a>
 				              	</li>
 				            </ul>
@@ -119,7 +119,7 @@
 					            	<div class="row">
 					            		<div class="col-md-6 col-xs-12">
 					            			<div class="form-group {{ $errors->has('name') ? ' has-error' : '' }} ">
-										    <label>Name</label>
+										    <label>{{__('customer_msg.tb_header_Name')}}</label>
 									        <input name="name" value="{{ (old('name'))?old('name'):(@$company->name)?$company->name:'' }}" placeholder="Name" class="form-control" type="text">
 									        @if ($errors->has('name'))
 					                            <span class="help-block">
@@ -128,7 +128,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('address_line_1') ? ' has-error' : '' }}">
-										    <label>Address line 1</label>
+										    <label>{{__('customer_msg.contactInfo_AddressLine1')}}</label>
 									        <input name="address_line_1" value="{{ (old('address_line_1'))?old('address_line_1'):(@$company->address_line_1)?$company->address_line_1:'' }}" placeholder="Address line 1" class="form-control" type="text">
 									        @if ($errors->has('address_line_1'))
 					                            <span class="help-block">
@@ -137,7 +137,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('address_line_2') ? ' has-error' : '' }}">
-										    <label>Address line 2 <small class="text-muted">(optional)</small></label>
+										    <label>{{__('customer_msg.contactInfo_AddressLine2')}}<small class="text-muted">({{__('customer_msg.service_Optional')}})</small></label>
 									        <input name="address_line_2" value="{{ (old('address_line_2'))?old('address_line_2'):(@$company->address_line_2)?$company->address_line_2:'' }}" placeholder="Address line 2" class="form-control" type="text">
 									        @if ($errors->has('address_line_2'))
 					                            <span class="help-block">
@@ -147,7 +147,7 @@
 									    </div>
 
 									    <div class="form-group {{ $errors->has('town') ? ' has-error' : '' }}">
-										    <label>Town</label>
+										    <label>{{__('customer_msg.contactInfo_Town')}}</label>
 									        <input name="town" value="{{ (old('town'))?old('town'):(@$company->town)?$company->town:'' }}" placeholder="Town" class="form-control" type="text">
 									        @if ($errors->has('town'))
 					                            <span class="help-block">
@@ -156,7 +156,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group  {{ $errors->has('post_code') ? ' has-error' : '' }}">
-										    <label>Post Code <small class="text-muted">(optional)</small></label>
+										    <label>{{__('customer_msg.contactInfo_PostCode')}} <small class="text-muted">({{__('customer_msg.service_Optional')}})</small></label>
 									        <input name="post_code" value="{{ (old('post_code'))?old('post_code'):(@$company->post_code)?$company->post_code:'' }}" placeholder="Post Code" class="form-control" type="text">
 									        @if ($errors->has('post_code'))
 					                            <span class="help-block">
@@ -166,7 +166,7 @@
 									    </div>
 
 									    <div class="form-group {{ $errors->has('country') ? ' has-error' : '' }}">
-										    <label>Country</label>
+										    <label>{{__('customer_msg.contactInfo_County')}}</label>
 									        <input name="country" value="{{ (old('country'))?old('country'):(@$company->country)?$company->country:'' }}" placeholder="Country" class="form-control" type="text">
 									        @if ($errors->has('country'))
 					                            <span class="help-block">
@@ -175,7 +175,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('state') ? ' has-error' : '' }}">
-										    <label>State/Province <small class="text-muted">(optional)</small></label>
+										    <label>{{__('customer_msg.company_StateProvince')}} <small class="text-muted">({{__('customer_msg.service_Optional')}})</small></label>
 									        <input name="state" value="{{ (old('state'))?old('state'):(@$company->state)?$company->state:'' }}" placeholder="State/Province" class="form-control" type="text">
 									        @if ($errors->has('state'))
 					                            <span class="help-block">
@@ -184,7 +184,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('file') ? ' has-error' : '' }}">
-										    <label>Logo</label>
+										    <label>{{__('customer_msg.company_Logo')}}</label>
 									        <input name="file" type="file">
 									        @if ($errors->has('file'))
 					                            <span class="help-block">
@@ -193,7 +193,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('theme_color') ? ' has-error' : '' }}">
-										    <label>Theme color</label>
+										    <label>{{__('customer_msg.company_ThemeColor')}}</label>
 									        <input name="theme_color" type="color" value="{{ (old('theme_color'))?old('theme_color'):(@$company->theme_color)?$company->theme_color:'#fff' }}" class="form-control">
 									        @if ($errors->has('theme_color'))
 					                            <span class="help-block">
@@ -202,7 +202,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('copy_right_text') ? ' has-error' : '' }}">
-										    <label>Copy right text</small></label>
+										    <label>{{__('customer_msg.company_Copyright')}}</small></label>
 									        <input name="copy_right_text" value="{{ (old('copy_right_text'))?old('copy_right_text'):(@$company->copy_right_text)?$company->copy_right_text:'' }}" placeholder="Copy right text" class="form-control" type="text">
 									        @if ($errors->has('copy_right_text'))
 					                            <span class="help-block">
@@ -212,10 +212,10 @@
 									    </div>
 					            		</div>
 					            	</div>
-					            	
+
 					            </div>
 				              	<!-- /.tab-pane -->
-				              	<div class="tab-pane 
+				              	<div class="tab-pane
 				              		@if(session('tabName'))
 				              			@if(session('tabName') == 'email_addresses')
 				              				active
@@ -225,7 +225,7 @@
 				              		<div class="row">
 					            		<div class="col-md-6 col-xs-12">
 					            			<div class="form-group {{ $errors->has('main_email_address') ? ' has-error' : '' }}">
-										    <label>Main email address</label>
+										    <label>{{__('customer_msg.company_MainEmail')}}</label>
 									        <input name="main_email_address" value="{{ (old('main_email_address'))?old('main_email_address'):(@$company->main_email_address)?$company->main_email_address:'' }}" placeholder="Main email address" class="form-control" type="text">
 									        @if ($errors->has('main_email_address'))
 					                            <span class="help-block">
@@ -234,7 +234,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('support_email_address') ? ' has-error' : '' }}">
-										    <label>Support email address</label>
+										    <label>{{__('customer_msg.company_SupportEmail')}}</label>
 									        <input name="support_email_address" value="{{ (old('support_email_address'))?old('support_email_address'):(@$company->support_email_address)?$company->support_email_address:'' }}" placeholder="Support email address" class="form-control" type="text">
 									        @if ($errors->has('support_email_address'))
 					                            <span class="help-block">
@@ -243,7 +243,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('billing_email_address') ? ' has-error' : '' }}">
-										    <label>Billing email address</label>
+										    <label>{{__('customer_msg.company_BillingEmail')}}</label>
 									        <input name="billing_email_address" value="{{ (old('billing_email_address'))?old('billing_email_address'):(@$company->billing_email_address)?$company->billing_email_address:'' }}" placeholder="Billing email address" class="form-control" type="text">
 									        @if ($errors->has('billing_email_address'))
 					                            <span class="help-block">
@@ -253,7 +253,7 @@
 									    </div>
 					            		</div>
 					            	</div>
-				              		
+
 				              	</div>
 				              	<!-- /.tab-pane -->
 				              	<div class="tab-pane
@@ -266,7 +266,7 @@
 				              		<div class="row">
 					            		<div class="col-md-6 col-xs-12">
 					            			<div class="form-group {{ $errors->has('bank_account') ? ' has-error' : '' }}">
-										    <label>Bank account <small class="text-muted">(optional)</small></label>
+										    <label>{{__('customer_msg.company_BankAccount')}} <small class="text-muted">(optional)</small></label>
 									        <input name="bank_account" value="{{ (old('bank_account'))?old('bank_account'):(@$company->bank_account)?$company->bank_account:'' }}" placeholder="Bank account " class="form-control" type="text">
 									        @if ($errors->has('bank_account'))
 					                            <span class="help-block">
@@ -276,7 +276,7 @@
 									    </div>
 
 									    <div class="form-group {{ $errors->has('bank_identification_code') ? ' has-error' : '' }}">
-										    <label>Bank identification code (BIC) <small class="text-muted">(optional)</small></label>
+										    <label>{{__('customer_msg.company_BankCode')}} <small class="text-muted">({{__('customer_msg.service_Optional')}})</small></label>
 									        <input name="bank_identification_code" value="{{ (old('bank_identification_code'))?old('bank_identification_code'):(@$company->bank_identification_code)?$company->bank_identification_code:'' }}" placeholder="Bank identification code (BIC)" class="form-control" type="text">
 									        @if ($errors->has('bank_identification_code'))
 					                            <span class="help-block">
@@ -286,7 +286,7 @@
 									    </div>
 
 									    <div class="form-group {{ $errors->has('vat_number') ? ' has-error' : '' }}">
-										    <label>VAT Number</label>
+										    <label>{{__('customer_msg.company_VatNum')}}</label>
 									        <input name="vat_number" value="{{ (old('vat_number'))?old('vat_number'):(@$company->vat_number)?$company->vat_number:'' }}" placeholder="VAT" class="form-control" type="text">
 									        @if ($errors->has('vat_number'))
 					                            <span class="help-block">
@@ -306,10 +306,10 @@
 									    </div>
 					            		</div>
 					            	</div>
-				              		
+
 				              	</div>
 				              	<!-- /.tab-pane -->
-				              	<div class="tab-pane 
+				              	<div class="tab-pane
 				              		@if(session('tabName'))
 				              			@if(session('tabName') == 'notes_to_customers')
 				              				active
@@ -319,7 +319,7 @@
 				              		<div class="row">
 					            		<div class="col-md-6 col-xs-12">
 					            			<div class="form-group {{ $errors->has('customer_note') ? ' has-error' : '' }}">
-										    <label>Notes to customer <small class="text-muted">(optional)</small></label>
+										    <label>{{__('customer_msg.company_NoteCustomer')}} <small class="text-muted">({{__('customer_msg.service_Optional')}})</small></label>
 									        <textarea name="customer_note" placeholder="Notes to customer" class="form-control">{{ (old('customer_note'))?old('customer_note'):(@$company->customer_note)?$company->customer_note:'' }}</textarea>
 									        @if ($errors->has('customer_note'))
 					                            <span class="help-block">
@@ -329,10 +329,10 @@
 									    </div>
 					            		</div>
 					            	</div>
-				              		
+
 				              	</div>
 				              	<!-- /.tab-pane -->
-				              	<div class="tab-pane 
+				              	<div class="tab-pane
 				              		@if(session('tabName'))
 				              			@if(session('tabName') == 'smtp_setting')
 				              				active
@@ -342,7 +342,7 @@
 				              		<div class="row">
 					            		<div class="col-md-6 col-xs-12">
 					            			<div class="form-group {{ $errors->has('mail_driver') ? ' has-error' : '' }}">
-										    <label>Mail driver</label>
+										    <label>{{__('customer_msg.company_MailDriver')}}</label>
 										    <input type="text" name="mail_driver" readonly="readonly" value="smtp" class="form-control">
 									        @if ($errors->has('mail_driver'))
 					                            <span class="help-block">
@@ -351,7 +351,7 @@
 					                        @endif
 									    </div>
 					              		<div class="form-group {{ $errors->has('mail_host') ? ' has-error' : '' }}">
-										    <label>Mail host</label>
+										    <label>{{__('customer_msg.company_MailHost')}}</label>
 									        <input name="mail_host" value="{{ (old('mail_host'))?old('mail_host'):(@$company->mail_host)?$company->mail_host:'' }}" placeholder="Mail host" class="form-control" type="text">
 									        @if ($errors->has('mail_host'))
 					                            <span class="help-block">
@@ -360,7 +360,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('mail_port') ? ' has-error' : '' }}">
-										    <label>Mail port</label>
+										    <label>{{__('customer_msg.company_MailPort')}}</label>
 									        <input name="mail_port" value="{{ (old('mail_port'))?old('mail_port'):(@$company->mail_port)?$company->mail_port:'' }}" placeholder="Mail port" class="form-control" type="text">
 									        @if ($errors->has('mail_port'))
 					                            <span class="help-block">
@@ -369,17 +369,17 @@
 					                        @endif
 									    </div>
 										<div class="form-group {{ $errors->has('mail_encryption') ? ' has-error' : '' }}">
-										    <label>Mail encryption</label>
+										    <label>{{__('customer_msg.company_MailEncryption')}}</label>
 									        <select name="mail_encryption" class="form-control">
 													<option value="">
 										        	None
 										        </option>
-									        	<option value="ssl" {{ 
+									        	<option value="ssl" {{
 									        		(old('mail_encryption') == "ssl") ? "selected='selected'" : (@$company->mail_encryption == 'ssl') ? "selected='selected'" : '' }}
 													>
 										        	SSL
 										        </option>
-									        	<option value="tls"{{ 
+									        	<option value="tls"{{
 									        		(old('mail_encryption') == "tls") ? "selected='selected'" : (@$company->mail_encryption == 'tls') ? "selected='selected'" : '' }}
 													>
 										        	TLS
@@ -392,7 +392,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('mail_username') ? ' has-error' : '' }}">
-										    <label>Mail username</label>
+										    <label>{{__('customer_msg.company_MailUsername')}}</label>
 									        <input name="mail_username" value="{{ (old('mail_username'))?old('mail_username'):(@$company->mail_username)?$company->mail_username:'' }}" placeholder="Mail username" class="form-control" type="text">
 									        @if ($errors->has('mail_username'))
 					                            <span class="help-block">
@@ -401,7 +401,7 @@
 					                        @endif
 									    </div>
 									    <div class="form-group {{ $errors->has('mail_password') ? ' has-error' : '' }}">
-										    <label>Mail password</label>
+										    <label>{{__('customer_msg.company_MailUserPassword')}}</label>
 									        <input type="password" name="mail_password" value="{{ (old('mail_password'))?old('mail_password'):(@$company->mail_password)?$company->mail_password:'' }}" placeholder="Mail password" class="form-control" type="text">
 									        @if ($errors->has('mail_password'))
 					                            <span class="help-block">
@@ -411,10 +411,10 @@
 									    </div>
 					            		</div>
 					            	</div>
-				              		
+
 				              	</div>
 				              	<!-- /.tab-pane -->
-				              	<div class="tab-pane 
+				              	<div class="tab-pane
 				              		@if(session('tabName'))
 				              			@if(session('tabName') == 'paypal_setting')
 				              				active
@@ -422,12 +422,12 @@
 				              		@endif
 				              	" id="paypal_setting">
 									<p>
-										<strong>Note: </strong>To generate your API credientials log in with your Paypal Account at: <a href="https://developer.paypal.com/developer/applications">https://developer.paypal.com/developer/applications</a>. Click on : MY APPS AND CREDENTIALS, Scroll down to REST API apps and click CREATE APP.
+										<strong>Note: </strong>{{__('customer_msg.company_NoteDesc')}}: <a href="https://developer.paypal.com/developer/applications">https://developer.paypal.com/developer/applications</a>. Click on : MY APPS AND CREDENTIALS, Scroll down to REST API apps and click CREATE APP.
 					            			</p>
 				              		<div class="row">
 					            		<div class="col-md-6 col-xs-12">
 						              		<div class="form-group {{ $errors->has('paypal_client_id') ? ' has-error' : '' }}">
-											    <label>Paypal client id</label>
+											    <label>{{__('customer_msg.company_PaypalId')}}</label>
 										        <input name="paypal_client_id" value="{{ (old('paypal_client_id'))?old('paypal_client_id'):(@$company->paypal_client_id)?$company->paypal_client_id:'' }}" placeholder="Paypal client id" class="form-control" type="text">
 										        @if ($errors->has('paypal_client_id'))
 						                            <span class="help-block">
@@ -436,7 +436,7 @@
 						                        @endif
 										    </div>
 										    <div class="form-group {{ $errors->has('paypal_secret') ? ' has-error' : '' }}">
-											    <label>Paypal secret</label>
+											    <label>{{__('customer_msg.company_PaypalSecret')}}</label>
 										        <input name="paypal_secret" value="{{ (old('paypal_secret'))?old('paypal_secret'):(@$company->paypal_secret)?$company->paypal_secret:'' }}" placeholder="Paypal secret" class="form-control" type="text">
 										        @if ($errors->has('paypal_secret'))
 						                            <span class="help-block">
@@ -446,113 +446,113 @@
 										    </div>
 
 										    <div class="form-group {{ $errors->has('paypal_currency_code') ? ' has-error' : '' }}">
-											    <label>Paypal currency code</label>
+											    <label>{{__('customer_msg.company_PaypalCurrencyCode')}}</label>
 										        @if (Auth::id() == 11)
 										        <input name="paypal_currency_code" value="{{ (old('paypal_currency_code'))?old('paypal_currency_code'):(@$company->paypal_currency_code)?$company->paypal_currency_code:'' }}" placeholder="Paypal currency code" class="form-control" type="text">
 												@else
 												<select name="paypal_currency_code" class="form-control">
-												
-													<option value="null" {{ 
+
+													<option value="null" {{
 														(old('paypal_currency_code') == "null") ? "selected='selected'" : (@$company->paypal_currency_code == 'null') ? "selected='selected'" : '' }}
 														>
 														Select Currency
 													</option>
-													<option value="AUD" {{ 
+													<option value="AUD" {{
 														(old('paypal_currency_code') == "AUD") ? "selected='selected'" : (@$company->paypal_currency_code == 'AUD') ? "selected='selected'" : '' }}
 														>
 														AUD
 													</option>
-													<option value="BRL" {{ 
+													<option value="BRL" {{
 														(old('paypal_currency_code') == "BRL") ? "selected='selected'" : (@$company->paypal_currency_code == 'BRL') ? "selected='selected'" : '' }}
 														>
 														BRL
 													</option>
-													<option value="CAD" {{ 
+													<option value="CAD" {{
 														(old('paypal_currency_code') == "CAD") ? "selected='selected'" : (@$company->paypal_currency_code == 'CAD') ? "selected='selected'" : '' }}
 														>
 														CAD
 													</option>
-													<option value="CZK" {{ 
+													<option value="CZK" {{
 														(old('paypal_currency_code') == "CZK") ? "selected='selected'" : (@$company->paypal_currency_code == 'CZK') ? "selected='selected'" : '' }}
 														>
 														CZK
 													</option>
-													<option value="DKK" {{ 
+													<option value="DKK" {{
 														(old('paypal_currency_code') == "DKK") ? "selected='selected'" : (@$company->paypal_currency_code == 'DKK') ? "selected='selected'" : '' }}
 														>
 														DKK
 													</option>
-													<option value="HKD" {{ 
+													<option value="HKD" {{
 														(old('paypal_currency_code') == "HKD") ? "selected='selected'" : (@$company->paypal_currency_code == 'HKD') ? "selected='selected'" : '' }}
 														>
 														HKD
 													</option>
-													<option value="ILS" {{ 
+													<option value="ILS" {{
 														(old('paypal_currency_code') == "ILS") ? "selected='selected'" : (@$company->paypal_currency_code == 'ILS') ? "selected='selected'" : '' }}
 														>
 														ILS
 													</option>
-													<option value="MXN" {{ 
+													<option value="MXN" {{
 														(old('paypal_currency_code') == "MXN") ? "selected='selected'" : (@$company->paypal_currency_code == 'MXN') ? "selected='selected'" : '' }}
 														>
 														MXN
 													</option>
-													<option value="NOK" {{ 
+													<option value="NOK" {{
 														(old('paypal_currency_code') == "NOK") ? "selected='selected'" : (@$company->paypal_currency_code == 'NOK') ? "selected='selected'" : '' }}
 														>
 														NOK
 													</option>
-													<option value="EUR" {{ 
+													<option value="EUR" {{
 														(old('paypal_currency_code') == "EUR") ? "selected='selected'" : (@$company->paypal_currency_code == 'EUR') ? "selected='selected'" : '' }}
 														>
 														EUR
 													</option>
-													<option value="NZD" {{ 
+													<option value="NZD" {{
 														(old('paypal_currency_code') == "NZD") ? "selected='selected'" : (@$company->paypal_currency_code == 'NZD') ? "selected='selected'" : '' }}
 														>
 														NZD
 													</option>
-													<option value="INR" {{ 
+													<option value="INR" {{
 														(old('paypal_currency_code') == "INR") ? "selected='selected'" : (@$company->paypal_currency_code == 'INR') ? "selected='selected'" : '' }}
 														>
 														INR
 													</option>
-													<option value="PHP" {{ 
+													<option value="PHP" {{
 														(old('paypal_currency_code') == "PHP") ? "selected='selected'" : (@$company->paypal_currency_code == 'PHP') ? "selected='selected'" : '' }}
 														>
 														PHP
 													</option>
-													<option value="PLN" {{ 
+													<option value="PLN" {{
 														(old('paypal_currency_code') == "PLN") ? "selected='selected'" : (@$company->paypal_currency_code == 'PLN') ? "selected='selected'" : '' }}
 														>
 														PLN
 													</option>
-													<option value="GBP" {{ 
+													<option value="GBP" {{
 														(old('paypal_currency_code') == "GBP") ? "selected='selected'" : (@$company->paypal_currency_code == 'GBP') ? "selected='selected'" : '' }}
 														>
 														GBP
 													</option>
-													<option value="SGD" {{ 
+													<option value="SGD" {{
 														(old('paypal_currency_code') == "SGD") ? "selected='selected'" : (@$company->paypal_currency_code == 'SGD') ? "selected='selected'" : '' }}
 														>
 														SGD
 													</option>
-													<option value="SEK" {{ 
+													<option value="SEK" {{
 														(old('paypal_currency_code') == "SEK") ? "selected='selected'" : (@$company->paypal_currency_code == 'SEK') ? "selected='selected'" : '' }}
 														>
 														SEK
 													</option>
-													<option value="CHF" {{ 
+													<option value="CHF" {{
 														(old('paypal_currency_code') == "CHF") ? "selected='selected'" : (@$company->paypal_currency_code == 'CHF') ? "selected='selected'" : '' }}
 														>
 														CHF
 													</option>
-													<option value="THB" {{ 
+													<option value="THB" {{
 														(old('paypal_currency_code') == "THB") ? "selected='selected'" : (@$company->paypal_currency_code == 'THB') ? "selected='selected'" : '' }}
 														>
 														THB
 													</option>
-													<option value="USD" {{ 
+													<option value="USD" {{
 														(old('paypal_currency_code') == "USD") ? "selected='selected'" : (@$company->paypal_currency_code == 'USD') ? "selected='selected'" : '' }}
 														>
 														USD
@@ -572,7 +572,7 @@
 				            </div>
 				            <!-- /.tab-content -->
 				        </div>
-			  			
+
 			  		</div>
 			  		<div class="box-footer">
 		                <div id="saveActions" class="form-group">
@@ -610,7 +610,7 @@
 			        initialPreview: [
 			            '{{ asset("uploads/logo/" . $company->logo) }}',
 			        ],
-			        initialPreviewAsData: true, 
+			        initialPreviewAsData: true,
 			        initialPreviewConfig: [
 			        	{caption: "", url: "", key: "{{ $company->id }}"},
 			        ],

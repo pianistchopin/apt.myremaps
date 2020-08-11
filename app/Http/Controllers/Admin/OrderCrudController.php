@@ -38,7 +38,7 @@ class OrderCrudController extends MasterController
         $this->crud->denyAccess('update');
         $this->crud->enableExportButtons();
         $this->crud->setEditView('vendor.custom.common.order.index');
-        
+
         $user = \Auth::guard('admin')->user();
         $this->crud->query->whereHas('user', function($query) use($user){
             return $query->where('company_id', $user->company_id);
@@ -69,13 +69,13 @@ class OrderCrudController extends MasterController
             ], config('site.order_status'), function($value) {
                 $this->crud->addClause('WHERE', 'status', $value);
         });
-        
+
         $this->crud->addFilter([
             'type' => 'date_range',
             'name' => 'created_at',
             'label' => 'From/To Date'
-            ], 
-            false, 
+            ],
+            false,
             function($value) {
                 $dates = json_decode($value);
                 $this->crud->query->whereDate('created_at','>=', $dates->from);
@@ -90,27 +90,27 @@ class OrderCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Order date',
+            'label' => __('customer_msg.tb_header_OrderDate'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'customer_company',
-            'label' => 'Company'
+            'label' => __('customer_msg.tb_header_Company'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'amount_with_sign',
-            'label' => 'Amount',
+            'label' => __('customer_msg.tb_header_Amount'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'status',
-            'label' => 'Order status'
+            'label' => __('customer_msg.tb_header_Status'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'displayable_id',
-            'label' => 'Invoice no.'
+            'label' => __('customer_msg.tb_header_InvoiceNo'),
         ]);
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');

@@ -52,10 +52,10 @@ class SubscriptionPaymentCrudController extends MasterController
                 $query->where('id', $subscription)->where('user_id', $user->id);
             });
         }
-        
+
 
         $this->crud->query->orderBy('id', 'DESC');
-       
+
         /*
         |--------------------------------------------------------------------------
         | Basic Crud column Configuration
@@ -64,22 +64,22 @@ class SubscriptionPaymentCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'next_billing_date',
-            'label' => 'Next Billing Date',
+            'label' => __('customer_msg.tb_header_NextBillingDate'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'last_payment_date',
-            'label' => 'Last Payment Date',
+            'label' => __('customer_msg.tb_header_LastPaymentDate'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'last_payment_amount',
-            'label' => 'Last Payment Amount',
+            'label' => __('customer_msg.tb_header_LastPaymentAmount'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'failed_payment_count',
-            'label' => 'Failed Payment Count',
+            'label' => __('customer_msg.tb_header_FailedPaymentCount'),
         ]);
 
 
@@ -108,14 +108,14 @@ class SubscriptionPaymentCrudController extends MasterController
         $redirect_location = parent::updateCrud($request);
         return $redirect_location;
     }
-    
+
     /**
      * download invoice
      * @param \App\Models\SubscriptionPayment $subscription_payment
      * @return $response
      */
     public function invoice(\App\Models\SubscriptionPayment $subscription_payment){
-        
+
         try{
             $subscription_payment = $subscription_payment->first();
             $company = $this->company;
@@ -128,7 +128,7 @@ class SubscriptionPaymentCrudController extends MasterController
             $pdf->render();
             return $pdf->stream($invoiceName);
         }catch(\Exception $e){
-            
+
             \Alert::error(__('admin.opps'))->flash();
             return redirect(url('admin/subscription-payment?company='.$company->id.'&subscription='.$subscription_payment->subscription_id));
         }

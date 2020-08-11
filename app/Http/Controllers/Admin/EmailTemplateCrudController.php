@@ -46,18 +46,18 @@ class EmailTemplateCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'email_type',
-            'label' => 'Email Type',
+            'label' => __('customer_msg.tb_header_EmailType'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'subject',
-            'label' => 'Subject',
+            'label' => __('customer_msg.tb_header_Subject'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Modified At'
-        ]); 
+            'label' => __('customer_msg.tb_header_ModifiedAt'),
+        ]);
 
         /*
         |--------------------------------------------------------------------------
@@ -87,7 +87,7 @@ class EmailTemplateCrudController extends MasterController
             'label' => "Body",
             'type' => 'wysiwyg'
         ]);
-        
+
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
         $this->crud->setRequiredFields(UpdateRequest::class, 'edit');
     }

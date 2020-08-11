@@ -101,22 +101,22 @@ class SubscriptionCrudController extends MasterController
 
         $this->crud->addColumn([
             'name' => 'pay_agreement_id',
-            'label' => 'Agreement Id',
+            'label' => __('customer_msg.tb_header_AggreeId'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'description',
-            'label' => 'Description',
+            'label' => __('customer_msg.tb_header_Description'),
         ]);
 
         $this->crud->addColumn([
             'name' => 'created_at',
-            'label' => 'Started At'
+            'label' => __('customer_msg.tb_header_StartedAt'),
         ]);
-        
+
         $this->crud->addColumn([
             'name' => 'next_billing_date',
-            'label' => 'Next Billing Date',
+            'label' => __('customer_msg.tb_header_NextBillingDate'),
             'type' => 'closure',
             'function' => function($entry) {
                 if($entry->is_trial==1){
@@ -130,15 +130,15 @@ class SubscriptionCrudController extends MasterController
         ]);
         $this->crud->addColumn([
             'name' => 'is_trial',
-            'label' => 'Type',
+            'label' => __('customer_msg.tb_header_Type'),
             'type' => 'boolean',
             'options' => [0 => 'Paid', 1 => 'Trial']
         ]);
 
         $this->crud->addColumn([
             'name' => 'status',
-            'label' => 'Status',
-            
+            'label' => __('customer_msg.tb_header_Status'),
+
         ]);
 
         $this->crud->setRequiredFields(StoreRequest::class, 'create');
@@ -165,7 +165,7 @@ class SubscriptionCrudController extends MasterController
      * @return \Illuminate\Http\Response
      */
     public function subscribeSubscription(Request $request, \App\Models\Package $package){
-        
+
         $startDate = '';
 
         switch ($package->billing_interval) {
@@ -192,7 +192,7 @@ class SubscriptionCrudController extends MasterController
             ->setStartDate($startDate);
             //->setStartDate(\Carbon\Carbon::now()->toIso8601String());
         /* Set agreement Plan */
-        
+
         $plan = new Plan();
         $plan->setId($package->pay_plan_id);
         $agreement->setPlan($plan);
@@ -291,7 +291,7 @@ class SubscriptionCrudController extends MasterController
         }
         return redirect(url('admin/subscription?company='.$user->company_id));
     }
-    
+
     /**
      * update subscription status.
      * @param Request $request

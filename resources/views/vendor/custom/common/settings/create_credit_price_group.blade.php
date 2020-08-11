@@ -35,12 +35,12 @@
 				</a><br><br>
 			  	<div class="box">
 				    <div class="box-header with-border">
-				      	<h3 class="box-title">Add a new credit price group</h3>
+				      	<h3 class="box-title">{{__('customer_msg.price_TranHistory')}}</h3>
 				    </div>
 			    	<div class="box-body row display-flex-wrap" style="display: flex; flex-wrap: wrap;">
 			    		<div class="col-md-6 col-xs-12">
 			    			<div class="form-group col-xs-12 required {{ $errors->has('name') ? ' has-error' : '' }}">
-							    <label>Group name</label>
+							    <label>{{__('customer_msg.price_GroupName')}}</label>
 						        <input type="text" name="name" class="form-control" placeholder="Group name" value="{{ old('name') }}">
 						        @if ($errors->has('name'))
 		                            <span class="help-block">
@@ -54,7 +54,7 @@
 						    @if($tuningCreditTires->count() > 0)
 						    	@foreach($tuningCreditTires as $tuningCreditTire)
 						    		<div class="form-group col-md-6 col-xs-12 required {{ $errors->has('credit_tires.'.$tuningCreditTire->id.'.from_credit') ? ' has-error' : '' }}">
-									    <label>{{ $tuningCreditTire->amount }} credit from</label>
+									    <label>{{ $tuningCreditTire->amount }} {{__('customer_msg.price_CreditFrom')}}</label>
 								        <input type="text" name="credit_tires[{{ $tuningCreditTire->id }}][from_credit]" class="form-control" placeholder="" value="{{ old('credit_tires.'.$tuningCreditTire->id.'.from_credit') }}">
 								        @if ($errors->has('credit_tires.'.$tuningCreditTire->id.'.from_credit'))
 				                            <span class="help-block">
@@ -63,7 +63,7 @@
 				                        @endif
 								    </div>
 								    <div class="form-group col-md-6 col-xs-12 required {{ $errors->has('credit_tires.'.$tuningCreditTire->id.'.for_credit') ? ' has-error' : '' }}">
-									    <label>{{ $tuningCreditTire->amount }} credit for</label>
+									    <label>{{ $tuningCreditTire->amount }} {{__('customer_msg.price_CreditFor')}}</label>
 								        <input type="text" name="credit_tires[{{ $tuningCreditTire->id }}][for_credit]" class="form-control" placeholder="" value="{{ old('credit_tires.'.$tuningCreditTire->id.'.for_credit') }}">
 								        @if ($errors->has('credit_tires.'.$tuningCreditTire->id.'.for_credit'))
 				                            <span class="help-block">
@@ -80,10 +80,10 @@
 						    <div class="btn-group">
 						        <button type="submit" class="btn btn-success">
 						            <span class="fa fa-save" role="presentation" aria-hidden="true"></span> &nbsp;
-						            <span>Save</span>
+						            <span>{{__('customer_msg.btn_Save')}}</span>
 						        </button>
 						    </div>
-						    <a href="{{ backpack_url('tuning-credit') }}" class="btn btn-default"><span class="fa fa-ban"></span> &nbsp;Cancel</a>
+						    <a href="{{ backpack_url('tuning-credit') }}" class="btn btn-default"><span class="fa fa-ban"></span> &nbsp;{{__('customer_msg.btn_Cancel')}}</a>
 						</div>
 			    	</div>
 			  	</div>
