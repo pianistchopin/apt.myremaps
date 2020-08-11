@@ -63,11 +63,11 @@
                 <a class="dropdown-item" href="/lang/es"><img class="flag-icon" src="{{asset('images/flag/pt.png')}}"> {{__('customer_msg.Portuguese')}} </a>
                 <a class="dropdown-item" href="/lang/it"><img class="flag-icon" src="{{asset('images/flag/it.png')}}"> {{__('customer_msg.Italian')}} </a>
                 <a class="dropdown-item" href="/lang/ja"><img class="flag-icon" src="{{asset('images/flag/ja.png')}}"> {{__('customer_msg.Japanese')}} </a>
-                <a class="dropdown-item" href="/lang/de"><img class="flag-icon" src="{{asset('images/flag/nl.png')}}"> {{__('customer_msg.Dutch')}} </a>
-                <a class="dropdown-item" href="/lang/de"><img class="flag-icon" src="{{asset('images/flag/pl.png')}}"> {{__('customer_msg.Polish')}} </a>
+                <a class="dropdown-item" href="/lang/nl"><img class="flag-icon" src="{{asset('images/flag/nl.png')}}"> {{__('customer_msg.Dutch')}} </a>
+                <a class="dropdown-item" href="/lang/pl"><img class="flag-icon" src="{{asset('images/flag/pl.png')}}"> {{__('customer_msg.Polish')}} </a>
                 <a class="dropdown-item" href="/lang/de"><img class="flag-icon" src="{{asset('images/flag/de.png')}}"> {{__('customer_msg.German')}} </a>
-                <a class="dropdown-item" href="/lang/de"><img class="flag-icon" src="{{asset('images/flag/ru.png')}}"> {{__('customer_msg.Russian')}} </a>
-                <a class="dropdown-item" href="/lang/de"><img class="flag-icon" src="{{asset('images/flag/tr.png')}}"> {{__('customer_msg.Turkish')}} </a>
+                <a class="dropdown-item" href="/lang/ru"><img class="flag-icon" src="{{asset('images/flag/ru.png')}}"> {{__('customer_msg.Russian')}} </a>
+                <a class="dropdown-item" href="/lang/tr"><img class="flag-icon" src="{{asset('images/flag/tr.png')}}"> {{__('customer_msg.Turkish')}} </a>
             </div>
         </li>
     </ul>
