@@ -27,8 +27,8 @@
                     @case('es')
                     <img src="{{asset('images/flag/es.png')}}"> {{__('customer_msg.Spanish')}}
                     @break
-                    @case('pr')
-                    <img src="{{asset('images/flag/pr.png')}}"> {{__('customer_msg.Portuguese')}}
+                    @case('pt')
+                    <img src="{{asset('images/flag/pt.png')}}"> {{__('customer_msg.Portuguese')}}
                     @break
                     @case('it')
                     <img src="{{asset('images/flag/it.png')}}"> {{__('customer_msg.Italian')}}
