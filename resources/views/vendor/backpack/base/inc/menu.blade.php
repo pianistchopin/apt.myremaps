@@ -60,7 +60,7 @@
                 <a class="dropdown-item" href="/lang/en"><img class="flag-icon" src="{{asset('images/flag/uk.png')}}"> {{__('customer_msg.English')}}</a>
                 <a class="dropdown-item" href="/lang/fr"><img class="flag-icon" src="{{asset('images/flag/fr.png')}}"> {{__('customer_msg.French')}} </a>
                 <a class="dropdown-item" href="/lang/es"><img class="flag-icon" src="{{asset('images/flag/es.png')}}"> {{__('customer_msg.Spanish')}} </a>
-                <a class="dropdown-item" href="/lang/es"><img class="flag-icon" src="{{asset('images/flag/pt.png')}}"> {{__('customer_msg.Portuguese')}} </a>
+                <a class="dropdown-item" href="/lang/pt"><img class="flag-icon" src="{{asset('images/flag/pt.png')}}"> {{__('customer_msg.Portuguese')}} </a>
                 <a class="dropdown-item" href="/lang/it"><img class="flag-icon" src="{{asset('images/flag/it.png')}}"> {{__('customer_msg.Italian')}} </a>
                 <a class="dropdown-item" href="/lang/ja"><img class="flag-icon" src="{{asset('images/flag/ja.png')}}"> {{__('customer_msg.Japanese')}} </a>
                 <a class="dropdown-item" href="/lang/nl"><img class="flag-icon" src="{{asset('images/flag/nl.png')}}"> {{__('customer_msg.Dutch')}} </a>
